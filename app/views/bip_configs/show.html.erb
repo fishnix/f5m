@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bip_config.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @bip_config.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_bip_config_path(@bip_config) %> |
+<%= link_to 'Back', bip_configs_path %>

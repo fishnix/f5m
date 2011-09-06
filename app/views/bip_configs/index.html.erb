@@ -1,0 +1,25 @@
+<h1>Listing bip_configs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bip_configs.each do |bip_config| %>
+  <tr>
+    <td><%= bip_config.name %></td>
+    <td><%= bip_config.content %></td>
+    <td><%= link_to 'Show', bip_config %></td>
+    <td><%= link_to 'Edit', edit_bip_config_path(bip_config) %></td>
+    <td><%= link_to 'Destroy', bip_config, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bip config', new_bip_config_path %>

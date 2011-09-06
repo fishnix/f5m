@@ -1,0 +1,13 @@
+<% form_for :upload, :url => { :action => :upload }, :html => { :multipart => true } do |f| %>
+  <p>Upload a BigIP Config file:</p>
+  	<div class="field">
+    	<%= f.label :name %><br />
+    	<%= f.text_field :name %>
+  	</div>
+	<div class="upload">
+    	<%= f.file_field :file %>
+  	</div>
+	<div class="actions">
+    	<%= f.submit %>
+	</div>
+<% end %>

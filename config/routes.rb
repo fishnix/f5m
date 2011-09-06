@@ -1,4 +1,7 @@
 F5m::Application.routes.draw do
+  resources :bip_configs
+  match 'bip_configs/upload' => 'bip_configs#upload'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
