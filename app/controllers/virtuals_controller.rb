@@ -1,8 +1,12 @@
 class VirtualsController < ApplicationController
 
-  def create
-    #@bip_config = BipConfig.find[:bip_config_id])
-    #@virtual = @bip_config.virtual.create(params[:name])
+  def index
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipselfip = @bip_config.virtuals.all
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
   end
-  
+
 end

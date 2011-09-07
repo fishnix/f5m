@@ -1,2 +1,32 @@
-<h1>Bipnodes#index</h1>
-<p>Find me in app/views/bipnodes/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h3>Bipnodes</h3>
+
+<b>Name:</b>
+<%= @bip_config.name %>
+
+<table>
+	<tr>
+		<th>Node Name</th>
+		<th>Screen</th>
+		<th>Monitor</th>
+		<th>Dynamic Ratio</th>
+		<th>Limit</th>
+		<th>Ratio</th>
+		<th>Enabled</th>
+	</tr>
+	<% @bipnodes.each do |bip_node| %>
+		<tr>
+		<td><%= bip_node.name %></td>
+		<td><%= bip_node.screen %></td>
+		<td><%= bip_node.monitor %></td>
+		<td><%= bip_node.dyn_ratio %></td>
+		<td><%= bip_node.limit %></td>
+		<td><%= bip_node.ratio %></td>
+		<td><%= bip_node.updown %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', bip_config_path(@bip_config) %>
+
