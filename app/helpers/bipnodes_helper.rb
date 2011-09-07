@@ -1,0 +1,2 @@
+module BipnodesHelper
+end

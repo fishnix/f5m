@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @bip_config.name %>
-</p>
+<h3>BipConfig: <%= @bip_config.name %> </h3>
 
-<p>
-  <b>Content:</b>
-  <%= @bip_config.content %>
-</p>
+<b>Name:</b>
+<%= @bip_config.name %>
 
+<ul>
+	<li><%= link_to "SelfIps", 	[@bip_config, :bipselfips] %></li>
+	<li><%= link_to "Virtuals", [@bip_config, :virtuals ]%></li>
+	<li><%= link_to "Pools", 	[@bip_config, :bippools ]%></li>
+	<li><%= link_to "Nodes", 	[@bip_config, :bipnodes ]%></li>
+	<li><%= link_to "Monitors", [@bip_config, :bipmonitors ]%></li>
+	<li><%= link_to "Rules", 	[@bip_config, :biprules ]%></li>
+	<li><%= link_to "Classes", 	[@bip_config, :bipclasses ]%></li>
+</ul>	
 
-<%= link_to 'Edit', edit_bip_config_path(@bip_config) %> |
 <%= link_to 'Back', bip_configs_path %>
