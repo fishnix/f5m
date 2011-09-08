@@ -195,9 +195,7 @@ class BipConfigsController < ApplicationController
       c[:lb_method] = content[/lb\s+method\s+(.+)$/,1] ? content[/lb\s+method\s+(.+)$/,1].chomp : nil
       logger.debug "pool lb method " + c[:lb_method].to_s
       
-      c[:monitors] = content[/monitor\s+all\s+(.+)$/,1] ? content[/monitor\s+all\s+(.+)$/,1].chomp : nil
-      logger.debug "pool monitors " + c[:monitors].to_s
-      
+      pools[name] = c[:full]
     end
     
     pools

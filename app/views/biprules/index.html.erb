@@ -1,2 +1,19 @@
-<h1>Biprules#index</h1>
-<p>Find me in app/views/biprules/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h3>Biprules</h3>
+
+<b>Name:</b>
+<%= @bip_config.name %>
+
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+	<% @biprules.each do |bip_rule| %>
+		<tr>
+		<td><%= bip_rule.name %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', bip_config_path(@bip_config) %>
