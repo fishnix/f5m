@@ -67,14 +67,6 @@ class BipConfigsController < ApplicationController
       
     @data = BipConfig.create(:name => conf_name, :content => filedata)
     
-    parse_virtuals(filedata).each do |n,c|
-      Virtual.create(:name => n, :content => c, :bip_config_id => @data.id)
-    end
-    
-    parse_pools(filedata).each do |n,c|
-      Bippool.create(:name => n, :content => c, :bip_config_id => @data.id)
-    end
-    
     parse_selfips(filedata).each do |n,c|
       Bipselfip.create( :name => n, :content => c[:full], :bip_config_id => @data.id, 
                         :netmask => c[:netmask], :unit => c[:unit], :floating => c[:floating], :vlan => c[:vlan])
@@ -83,6 +75,11 @@ class BipConfigsController < ApplicationController
     parse_nodes(filedata).each do |n,c|
       Bipnode.create( :name => n, :content => c[:full], :bip_config_id => @data.id, :dyn_ratio => c[:dyn_ratio], 
                       :limit => c[:limit], :monitor => c[:monitor], :ratio => c[:ratio], :screen => c[:screen], :updown => c[:updown])
+    end
+    
+    parse_pools(filedata).each do |n,c|
+      Bippool.create(:name => n, :content => c, :bip_config_id => @data.id)
+      #Bipmember.create(:name => )
     end
     
     parse_rules(filedata).each do |n,c|
@@ -95,6 +92,10 @@ class BipConfigsController < ApplicationController
     
     parse_classes(filedata).each do |n,c|
       Bipclass.create(:name => n, :content => c, :bip_config_id => @data.id)
+    end
+    
+    parse_virtuals(filedata).each do |n,c|
+      Virtual.create(:name => n, :content => c, :bip_config_id => @data.id)
     end
     
     redirect_to bip_configs_path
@@ -125,23 +126,23 @@ class BipConfigsController < ApplicationController
       name = m[0]
       content = m[1]
       
-      logger.debug "selfips: " + name.to_s
+      logger.debug "DEBUG selfips: " + name.to_s
       
       c = Hash.new
       c[:full] = content
-      logger.debug "selfips full " + c[:full].to_s
+      logger.debug "DEBUG selfips full " + c[:full].to_s
       
       c[:netmask] = content[/netmask\s+(\d+.\d+.\d+.\d+)\s*$/,1] ? content[/netmask\s+(\d+.\d+.\d+.\d+)\s*$/,1].chomp : nil
-      logger.debug "selfips netmask " + c[:netmask].to_s
+      logger.debug "DEBUG selfips netmask " + c[:netmask].to_s
       
       c[:unit] = content[/unit\s(\d+)\s*$/,1] ? content[/unit\s(\d+)\s*$/,1].chomp : nil
-      logger.debug  "selfips unit " + c[:unit].to_s
+      logger.debug  "DEBUG selfips unit " + c[:unit].to_s
       
       c[:vlan] = content[/vlan\s+([A-Za-z0-9_-]+)\s*$/,1] ? content[/vlan\s+([A-Za-z0-9_-]+)\s*$/,1].chomp : nil
-      logger.debug "selfips vlan " + c[:vlan].to_s
+      logger.debug "DEBUG selfips vlan " + c[:vlan].to_s
       
       c[:floating] = content =~ /floating\s+enable\s*$/ ? true : false
-      logger.debug "selfips floating? " + c[:floating].to_s
+      logger.debug "DEBUG selfips floating? " + c[:floating].to_s
       
       selfips[name] = c
     end
@@ -161,12 +162,12 @@ class BipConfigsController < ApplicationController
       name = m[0]
       content = m[1]
 
-      logger.debug "virtuals: " + name.to_s
+      logger.debug "DEBUG virtuals: " + name.to_s
       
       c = Hash.new
       
       c[:full] = content
-      logger.debug "virtuals full " + c[:full].to_s
+      logger.debug "DEBUG virtuals full " + c[:full].to_s
       
       virtuals[name] = c[:full]
     end
@@ -193,7 +194,15 @@ class BipConfigsController < ApplicationController
       logger.debug "pools full " + c[:full].to_s
       
       c[:lb_method] = content[/lb\s+method\s+(.+)$/,1] ? content[/lb\s+method\s+(.+)$/,1].chomp : nil
-      logger.debug "pool lb method " + c[:lb_method].to_s
+      logger.debug "DEBUG pool lb method " + c[:lb_method].to_s
+      
+      c[:members] = content.scan(/(\d+\.\d+\.\d+\.\d+:(?:\w|\d+))/)
+      
+      c[:monitors] = content.match(/monitor\s+all\s+([A-Za-z0-9_-]+)(?:\s+and\s+([A-Za-z0-9_-]+))*/).to_a
+      c[:monitors].delete_at(0)
+      
+      c[:members].each { |m| logger.debug "DEBUG members " + m.to_s }
+      c[:monitors].each { |m| logger.debug "DEBUG monitors " + m.to_s } unless c[:monitors].nil?
       
       pools[name] = c[:full]
     end
@@ -217,25 +226,25 @@ class BipConfigsController < ApplicationController
       c = Hash.new
 
       c[:full] = content
-      logger.debug "nodes full " + c[:full].to_s
+      logger.debug "DEBUG nodes full " + c[:full].to_s
 
       c[:dyn_ratio] = content[/dynamic\s+ratio\s+(\d+)$/,1] ? content[/dynamic\s+ratio\s+(\d+)$/,1].chomp : nil
-      logger.debug "node dynamic ratio " + c[:dyn_ratio].to_s
+      logger.debug "DEBUG node dynamic ratio " + c[:dyn_ratio].to_s
 
       c[:limit] = content[/limit\s+(\d+)$/,1] ? content[/limit\s+(\d+)$/,1].chomp : nil
-      logger.debug "node limit " + c[:limit].to_s
+      logger.debug "DEBUG node limit " + c[:limit].to_s
 
       c[:ratio] = content[/^\s*ratio\s+(\d+)$/,1] ? content[/^\s*ratio\s+(\d+)$/,1].chomp : nil
-      logger.debug "node ratio " + c[:ratio].to_s
+      logger.debug "DEBUG node ratio " + c[:ratio].to_s
       
       c[:monitor] = content[/monitor\s+(.*)$/,1] ? content[/monitor\s+(.*)$/,1].chomp : nil
-      logger.debug "monitor " + c[:monitor].to_s
+      logger.debug "DEBUG monitor " + c[:monitor].to_s
 
       c[:screen] = content[/screen\s+(.*)$/,1] ? content[/screen\s+(.*)$/,1].chomp : nil
-      logger.debug "screen " + c[:screen].to_s
+      logger.debug "DEBUG screen " + c[:screen].to_s
 
       c[:updown] = content =~ /\s*down\s*$/ ? false : true
-      logger.debug "updown " + c[:updown].to_s
+      logger.debug "DEBUG updown " + c[:updown].to_s
       
       nodes[name] = c
     end

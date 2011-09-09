@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  bipnode_id: 1
+  bippool_id: 1
+
+two:
+  name: MyString
+  bipnode_id: 1
+  bippool_id: 1
