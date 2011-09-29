@@ -1,0 +1,19 @@
+
+th {
+  background-color: #151B8D;
+  color: #fff;
+  vertical-align: middle;
+  padding: 5px 5px 5px 5px;
+}
+
+td {
+  padding: 5px 5px 5px 5px;
+}
+
+tr:nth-child(2n+1) {
+  background-color: #B7CEEC;
+}
+
+tr:nth-child(2n) {
+  background-color: #82CAFF;
+}

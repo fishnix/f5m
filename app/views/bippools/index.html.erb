@@ -1,2 +1,31 @@
-<h1>Bippools#index</h1>
-<p>Find me in app/views/bippools/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h3>Bippools</h3>
+
+<b>Name:</b>
+<%= @bip_config.name %>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Members</th>
+		<th>Monitors</th>
+	</tr>
+	<% @bippools.each do |bip_pool| %>
+		<tr>
+			<td>
+				<%= bip_pool.name %><br />
+			</td>
+			<td>
+				<% bip_pool.bipmembers.each do |m| %>
+					<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id) %>:<%= m.port %><br />
+				<% end %>
+			</td>
+			<td>
+				<%= bip_pool.monitors %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', bip_config_path(@bip_config) %>

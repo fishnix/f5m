@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908180842) do
+ActiveRecord::Schema.define(:version => 20110929171550) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(:version => 20110908180842) do
     t.integer  "bippool_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bip_config_id"
+    t.string   "ip"
+    t.string   "port"
   end
 
   create_table "bipmonitors", :force => true do |t|
@@ -63,6 +66,9 @@ ActiveRecord::Schema.define(:version => 20110908180842) do
     t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lbmethod"
+    t.text     "members"
+    t.text     "monitors"
   end
 
   create_table "biprules", :force => true do |t|

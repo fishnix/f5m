@@ -10,6 +10,8 @@ class BipnodesController < ApplicationController
   end
 
   def show
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipnode = @bip_config.bipnodes.find(params[:id])
   end
 
 end

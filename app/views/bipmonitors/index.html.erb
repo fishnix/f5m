@@ -1,2 +1,19 @@
-<h1>Bipmonitors#index</h1>
-<p>Find me in app/views/bipmonitors/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h3>Bipmonitors</h3>
+
+<b>Name:</b>
+<%= @bip_config.name %>
+
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+	<% @bipmonitors.each do |bip_monitor| %>
+		<tr>
+		<td><%= bip_monitor.name %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Back', bip_config_path(@bip_config) %>

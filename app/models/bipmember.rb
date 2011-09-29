@@ -1,4 +1,4 @@
 class Bipmember < ActiveRecord::Base
-  belongs_to :pool
-  belongs_to :node
+  belongs_to :bippool
+  belongs_to :bipnode
 end

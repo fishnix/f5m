@@ -1,25 +1,15 @@
 F5m::Application.routes.draw do
-  get "bipclasses/index"
-
-  get "bipclasses/show"
-
-  get "biprules/index"
-
-  get "biprules/show"
-
-  get "bipmonitors/index"
-
-  get "bipmonitors/show"
-
-  get "bipnodes/index"
-
-  get "bipnodes/show"
-
-  get "bippools/index"
-
-  get "bippools/show"
-
-  get "bipselfips/show"
+  #get "bipclasses/index"
+  #get "bipclasses/show"
+  #get "biprules/index"
+  #get "biprules/show"
+  #get "bipmonitors/index"
+  #get "bipmonitors/show"
+  #get "bipnodes/index"
+  #get "bipnodes/show"
+  #get "bippools/index"
+  #get "bippools/show"
+  #get "bipselfips/show"
 
   resources :bip_configs do
     resources :virtuals
@@ -30,6 +20,7 @@ F5m::Application.routes.draw do
     resources :biprules
     resources :bipnodes
   end
+  
   match 'bip_configs/upload' => 'bip_configs#upload'
 
   # The priority is based upon order of creation:

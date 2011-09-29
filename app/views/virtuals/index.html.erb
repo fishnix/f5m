@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Bipclasses</h3>
+<h3>Bipvirtuals</h3>
 
 <b>Name:</b>
 <%= @bip_config.name %>
@@ -8,10 +8,12 @@
 <table>
 	<tr>
 		<th>Name</th>
+		<th>Content</th>
 	</tr>
-	<% @bipclasses.each do |bip_class| %>
+	<% @bipvirtuals.each do |bip_virtual| %>
 		<tr>
-		<td><%= bip_class.name %></td>
+			<td><%= bip_virtual.name %></td>
+			<td><%= bip_virtual.content %></td>
 		</tr>
 	<% end %>
 </table>
