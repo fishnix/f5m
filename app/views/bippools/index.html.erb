@@ -18,7 +18,8 @@
 			</td>
 			<td>
 				<% bip_pool.bipmembers.each do |m| %>
-					<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id) %>:<%= m.port %><br />
+					<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id),
+												:method => :get, :remote => true, 'data-popup' => true %>:<%= m.port %><br />
 				<% end %>
 			</td>
 			<td>
