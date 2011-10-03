@@ -12,10 +12,6 @@ class BippoolsController < ApplicationController
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bippool = @bip_config.bippools.find(params[:id])
     @bipnodes = @bippool.bipnodes.all
-    
-    respond_to do | format |  
-        format.js {render :layout => false}  
-    end
   end
 
 end

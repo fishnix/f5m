@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110929171550) do
+ActiveRecord::Schema.define(:version => 20111001235725) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(:version => 20110929171550) do
     t.boolean  "updown"
   end
 
+  create_table "bippoolmonitors", :force => true do |t|
+    t.integer  "bippool_id"
+    t.integer  "bipmonitor_id"
+    t.integer  "bip_config_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "bippools", :force => true do |t|
     t.string   "name"
     t.text     "content"
@@ -97,6 +105,23 @@ ActiveRecord::Schema.define(:version => 20110929171550) do
     t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "enable"
+    t.string   "destination"
+    t.string   "mask"
+    t.boolean  "mirror"
+    t.string   "limit"
+    t.string   "ip_protocol"
+    t.string   "snat"
+    t.string   "snatpool"
+    t.string   "srcport"
+    t.string   "type"
+    t.text     "pool"
+    t.string   "persist"
+    t.string   "fb_persist"
+    t.text     "profiles"
+    t.text     "rules"
+    t.text     "vlans"
+    t.text     "httpclasses"
   end
 
 end
