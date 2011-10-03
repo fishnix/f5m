@@ -1,1 +1,5 @@
-
+Barebones, quick and dirty F5 configuration parser.
+- Work in progress
+- May not parse everything (we don't use every feature and so I didn't include every feature)
+- Will include a "migrated" flag since the purpose was to help us
+  find deps and keep track of what we've moved to our new pair of LTMs

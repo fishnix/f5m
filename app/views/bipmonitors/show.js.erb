@@ -1,0 +1,3 @@
+var newDiv = $(document.createElement('div'));
+newDiv.html('<%= escape_javascript(render(:partial => @bipmonitor)) %>'); 
+newDiv.dialog({ title: 'Monitor' , modal: true, width: 'auto', heigh: 'auto' }).draggable();

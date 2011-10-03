@@ -3,4 +3,7 @@ class Bippool < ActiveRecord::Base
   belongs_to :bip_config
   has_many :bipmembers
   has_many :bipnodes, :through => :bipmembers
+  has_many :bippoolmonitors
+  has_many :bipmonitors, :through => :bippoolmonitors
 end
+  

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  bippool_id: 1
+  bipmonitor_ip: 1
+  bip_config_id: 1
+
+two:
+  bippool_id: 1
+  bipmonitor_ip: 1
+  bip_config_id: 1

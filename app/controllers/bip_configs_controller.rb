@@ -84,6 +84,14 @@ class BipConfigsController < ApplicationController
 
         logger.debug "DEBUG POOL Members from pool. node: " + mem[0] + ' port: ' + mem[1]
       end
+            
+      c[:monitors].each do |m|
+        monitor = Bipmonitor.find_or_create_by_name_and_bip_config_id(m, @data.id)
+        poolmon = Bippoolmonitor.create(:bippool_id => bippool.id, :bipmonitor_id => monitor.id, :bip_config_id => @data.id)
+        
+        logger.debug "DEBUG POOL Monitor: " + m
+      end
+      
     end
 
     parse_virtuals(filedata).each do |n,c|
