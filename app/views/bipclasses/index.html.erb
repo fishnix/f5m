@@ -12,6 +12,11 @@
 	<% @bipclasses.each do |bip_class| %>
 		<tr>
 		<td><%= bip_class.name %></td>
+		<td>
+			<% bip_class.content.each do |c| %>
+				<%= c %><br />
+			<% end %>	
+		</td>
 		</tr>
 	<% end %>
 </table>

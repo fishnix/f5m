@@ -323,11 +323,12 @@ class ApplicationController < ActionController::Base
   # Pull rules from bigIP conf
   # returns Hash
   def parse_rules(confdata)
-    regex = /^rule\s+([A-Za-z0-9_-]+)\s+\{/
+    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user'
+    regex = /^rule\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
    
     rules = Hash.new
     confdata.scan(regex) do |m|
-      rules[m[0]] = nil
+      rules[m[0]] = m[1]
     end
     
     rules
