@@ -9,11 +9,49 @@
 	<tr>
 		<th>Name</th>
 		<th>Content</th>
+		<th>enable</th>
+	 	<th>destination</th>
+	  	<th>mask</th>
+	  	<th>mirror</th>
+	  	<th>limit</th>
+	  	<th>ip protocol</th>
+	  	<th>snat</th>
+	  	<th>snatpool</th>
+	  	<th>srcport</th>
+	  	<th>type</th>
+	  	<th>pool</th>
+	  	<th>persist</th>
+	  	<th>fb_persist</th>
+		<th>rules</th>
+		<th>profiles</th>
+		<th>httpclasses</th>
+		<th>vlans</th>
 	</tr>
 	<% @bipvirtuals.each do |bip_virtual| %>
 		<tr>
 			<td><%= bip_virtual.name %></td>
 			<td><%= bip_virtual.content %></td>
+			<td><%= bip_virtual.enable %></td>
+		 	<td><%= bip_virtual.destination %></td>
+		  	<td><%= bip_virtual.mask %></td>
+		  	<td><%= bip_virtual.mirror %></td>
+		  	<td><%= bip_virtual.limit %></td>
+		  	<td><%= bip_virtual.ip_protocol %></td>
+		  	<td><%= bip_virtual.snat %></td>
+		  	<td><%= bip_virtual.snatpool %></td>
+		  	<td><%= bip_virtual.srcport %></td>
+		  	<td><%= bip_virtual.type %></td>
+			<td>
+				<% bip_virtual.bippools.each do |p| %>
+					<%= link_to p.name, bip_config_bippool_path(@bip_config.id,p.id), :remote => true %><br />
+				<% end %>
+			</td>
+		  	<td><%= bip_virtual.persist %></td>
+		  	<td><%= bip_virtual.fb_persist %></td>
+			<td><%= bip_virtual.rules %></td>
+			<td><%= bip_virtual.profiles %></td>
+			<td><%= bip_virtual.httpclasses %></td>
+			<td><%= bip_virtual.vlans %><td>
 		</tr>
 	<% end %>
 </table>

@@ -8,4 +8,5 @@ class BipConfig < ActiveRecord::Base
   has_many :bipclasses,       :dependent => :destroy
   has_many :biprules,         :dependent => :destroy
   has_many :bippoolmonitors,  :dependent => :destroy
+  has_many :bippoolvirtuals,  :dependent => :destroy
 end

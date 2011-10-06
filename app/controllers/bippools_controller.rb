@@ -11,7 +11,7 @@ class BippoolsController < ApplicationController
   def show
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bippool = @bip_config.bippools.find(params[:id])
-    @bipnodes = @bippool.bipnodes.all
+    #@bipnodes = @bippool.bipnodes.all
   end
 
 end

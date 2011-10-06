@@ -53,6 +53,10 @@ class ApplicationController < ActionController::Base
   # - pool
   # - persist
   # - fb_persist
+  # - profiles
+  # - rules
+  # - httpclasses
+  # - vlans
   #
   # Didnt handle:
   # - auth
@@ -206,7 +210,7 @@ class ApplicationController < ActionController::Base
         
       end
       
-      virtuals[name] = c[:full]
+      virtuals[name] = c
     end
     
     virtuals

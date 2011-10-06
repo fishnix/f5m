@@ -73,7 +73,7 @@ class BipConfigsController < ApplicationController
     end
     
     parse_pools(filedata).each do |n,c|
-      bippool = Bippool.create(:name => n, :content => c, :bip_config_id => @data.id,
+      bippool = Bippool.create(:name => n, :content => c[:full], :bip_config_id => @data.id,
                       :lbmethod => c[:lb_method], :members => c[:members].join(','), :monitors => c[:monitors].join(','))
                       
       c[:members].each do |m|        
@@ -95,7 +95,15 @@ class BipConfigsController < ApplicationController
     end
 
     parse_virtuals(filedata).each do |n,c|
-      Virtual.create(:name => n, :content => c, :bip_config_id => @data.id)
+      virtual = Virtual.create(:name => n, :content => c[:full], :bip_config_id => @data.id, :enable => c[:enable], :destination => c[:destination],
+                      :mask => c[:mask], :mirror => c[:mirror], :limit => c[:limit], :ip_protocol => c[:ip_protocol], :snat => c[:snat],
+                      :snatpool => c[:snatpool], :srcport => c[:srcport], :type => c[:type], :pool => c[:pool], :persist => c[:persist],
+                      :fb_persist => c[:fb_persist], :profiles => c[:profiles], :rules => c[:rules], :vlans => c[:vlans],
+                      :httpclasses => c[:httpclasses])
+                      
+      bippool = Bippool.find_or_create_by_name_and_bip_config_id(c[:pool], @data.id) unless c[:pool].nil?
+      poolvirtual = Bippoolvirtual.create(:bippool_id => bippool.id, :virtual_id => virtual.id, :bip_config_id => @data.id ) unless c[:pool].nil?
+      
     end
     
     redirect_to bip_configs_path

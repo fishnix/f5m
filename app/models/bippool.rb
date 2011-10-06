@@ -5,5 +5,7 @@ class Bippool < ActiveRecord::Base
   has_many :bipnodes, :through => :bipmembers
   has_many :bippoolmonitors
   has_many :bipmonitors, :through => :bippoolmonitors
+  has_many :virtuals, :through => :bippoolvirtuals
+  has_many :bippoolvirtuals
 end
   

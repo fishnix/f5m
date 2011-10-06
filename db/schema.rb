@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111001235725) do
+ActiveRecord::Schema.define(:version => 20111005221926) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(:version => 20111001235725) do
     t.string   "lbmethod"
     t.text     "members"
     t.text     "monitors"
+  end
+
+  create_table "bippoolvirtuals", :force => true do |t|
+    t.integer "bippool_id"
+    t.integer "virtual_id"
+    t.integer "bip_config_id"
   end
 
   create_table "biprules", :force => true do |t|

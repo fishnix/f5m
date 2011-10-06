@@ -1,0 +1,26 @@
+<div class="modal">
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Members</th>
+		<th>Monitors</th>
+		<th>Content</th>
+	</tr>
+	<tr>
+		<td>
+			<%= @bippool.name %><br />
+		</td>
+		<td>
+			<% @bippool.bipmembers.each do |m| %>
+				<%= m.bipnode.name %>:<%= m.port %><br />
+			<% end %>
+		</td>
+		<td>
+			<% @bippool.bipmonitors.each do |m| %>
+				<%= m.name %><br />
+			<% end %>
+		</td>
+		<td><pre><%= @bippool.content %></pre></td>
+	</tr>
+</table>
+</div>
