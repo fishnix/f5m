@@ -7,6 +7,7 @@
 
 <table>
 	<tr>
+		<th>Migrated</th>
 		<th>Name</th>
 		<th>Content</th>
 		<th>enable</th>
@@ -29,6 +30,7 @@
 	</tr>
 	<% @bipvirtuals.each do |bip_virtual| %>
 		<tr>
+			<td><%= bip_virtual.migrated %></td>
 			<td><%= bip_virtual.name %></td>
 			<td><%= bip_virtual.content %></td>
 			<td><%= bip_virtual.enable %></td>

@@ -7,17 +7,19 @@
 
 <table>
 	<tr>
+		<th>Migrated</th>
 		<th>Name</th>
 		<th>Content</th>
 	</tr>
 	<% @bipmonitors.each do |bip_monitor| %>
 		<tr>
-		<td><%= bip_monitor.name %></td>
-		<td>
-			<% bip_monitor.content.each do |m| %>
-				<%= m %><br />
-			<% end %>	
-		</td>
+			<td><%= bip_monitor.migrated %>
+			<td><%= bip_monitor.name %></td>
+			<td>
+				<% bip_monitor.content.each do |m| %>
+					<%= m %><br />
+				<% end %>	
+			</td>
 		</tr>
 	<% end %>
 </table>

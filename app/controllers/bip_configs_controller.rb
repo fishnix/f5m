@@ -56,31 +56,34 @@ class BipConfigsController < ApplicationController
     end  
     
     parse_rules(filedata).each do |n,c|
-      Biprule.create(:name => n, :content => c, :bip_config_id => @data.id)
+      Biprule.create(:name => n, :content => c, :bip_config_id => @data.id, :migrated => false)
     end
     
     parse_monitors(filedata).each do |n,c|
-      Bipmonitor.create(:name => n, :content => c, :bip_config_id => @data.id)
+      Bipmonitor.create(:name => n, :content => c, :bip_config_id => @data.id, :migrated => false)
     end
     
     parse_classes(filedata).each do |n,c|
-      Bipclass.create(:name => n, :content => c, :bip_config_id => @data.id)
+      Bipclass.create(:name => n, :content => c, :bip_config_id => @data.id, :migrated => false)
     end
     
     parse_nodes(filedata).each do |n,c|
       Bipnode.create( :name => n, :content => c[:full], :bip_config_id => @data.id, :dyn_ratio => c[:dyn_ratio], 
-                      :limit => c[:limit], :monitor => c[:monitor], :ratio => c[:ratio], :screen => c[:screen], :updown => c[:updown])
+                      :limit => c[:limit], :monitor => c[:monitor], :ratio => c[:ratio], :screen => c[:screen], 
+                      :updown => c[:updown], :migrated => false)
     end
     
     parse_pools(filedata).each do |n,c|
       bippool = Bippool.create(:name => n, :content => c[:full], :bip_config_id => @data.id,
-                      :lbmethod => c[:lb_method], :members => c[:members].join(','), :monitors => c[:monitors].join(','))
+                      :lbmethod => c[:lb_method], :members => c[:members].join(','), :monitors => c[:monitors].join(','),
+                      :migrated => false)
                       
       c[:members].each do |m|        
         mem = m.split(':')
         node = Bipnode.find_or_create_by_name_and_bip_config_id(mem[0], @data.id)
         member = Bipmember.find_or_create_by_name_and_bip_config_id(:name => m, :bip_config_id => @data.id, :ip => mem[0],
-                                                                    :port => mem[1], :bipnode_id => node.id, :bippool_id => bippool.id)
+                                                                    :port => mem[1], :bipnode_id => node.id, :bippool_id => bippool.id,
+                                                                    :migrated => false)
 
         logger.debug "DEBUG POOL Members from pool. node: " + mem[0] + ' port: ' + mem[1]
       end
@@ -99,7 +102,7 @@ class BipConfigsController < ApplicationController
                       :mask => c[:mask], :mirror => c[:mirror], :limit => c[:limit], :ip_protocol => c[:ip_protocol], :snat => c[:snat],
                       :snatpool => c[:snatpool], :srcport => c[:srcport], :type => c[:type], :pool => c[:pool], :persist => c[:persist],
                       :fb_persist => c[:fb_persist], :profiles => c[:profiles], :rules => c[:rules], :vlans => c[:vlans],
-                      :httpclasses => c[:httpclasses])
+                      :httpclasses => c[:httpclasses], :migrated => false)
                       
       bippool = Bippool.find_or_create_by_name_and_bip_config_id(c[:pool], @data.id) unless c[:pool].nil?
       poolvirtual = Bippoolvirtual.create(:bippool_id => bippool.id, :virtual_id => virtual.id, :bip_config_id => @data.id ) unless c[:pool].nil?

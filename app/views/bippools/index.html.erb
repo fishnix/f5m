@@ -7,15 +7,15 @@
 
 <table>
 	<tr>
+		<th>Migrated</th>
 		<th>Name</th>
 		<th>Members</th>
 		<th>Monitors</th>
 	</tr>
 	<% @bippools.each do |bip_pool| %>
 		<tr>
-			<td>
-				<%= bip_pool.name %><br />
-			</td>
+			<td><%= bip_pool.migrated %></td>
+			<td><%= bip_pool.name %><br /></td>
 			<td>
 				<% bip_pool.bipmembers.each do |m| %>
 					<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id), :remote => true %>:<%= m.port %><br />
