@@ -18,7 +18,7 @@
 	</tr>
 	<% @bipnodes.each do |bip_node| %>
 		<tr>
-			<td><%= bip_node.migrated %></td>
+			<td><%= render :partial => "migrated", :locals => { :bip_node => bip_node } %></td>
 			<td><%= bip_node.name %></td>
 			<td><%= bip_node.screen %></td>
 			<td><%= bip_node.monitor %></td>

@@ -12,14 +12,13 @@
 		<th>Content</th>
 	</tr>
 	<% @bipclasses.each do |bip_class| %>
-		<tr>
-			<td>
-				<%= bip_class.migrated %>
-				<%= link_to "Migrated", :controller => :bipclasses, :action => :migrate %>
-			</td>
+		<div class="bip_object">
+			<tr>
+			<td><%= render :partial => "migrated", :locals => { :bip_class => bip_class } %></td>
 			<td><%= bip_class.name %></td>
-			<td><%= bip_class.content %></td>
-		</tr>
+			<td><%= render :partial => "content", :locals => { :bip_class => bip_class } %></td>
+			</tr>
+		</div>
 	<% end %>
 </table>
 

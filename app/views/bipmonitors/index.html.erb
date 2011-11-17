@@ -13,13 +13,9 @@
 	</tr>
 	<% @bipmonitors.each do |bip_monitor| %>
 		<tr>
-			<td><%= bip_monitor.migrated %>
+			<td><%= render :partial => "migrated", :locals => { :bip_monitor => bip_monitor } %></td>
 			<td><%= bip_monitor.name %></td>
-			<td>
-				<% bip_monitor.content.each do |m| %>
-					<%= m %><br />
-				<% end %>	
-			</td>
+			<td><%= render :partial => "content", :locals => { :bip_monitor => bip_monitor } %></td>
 		</tr>
 	<% end %>
 </table>

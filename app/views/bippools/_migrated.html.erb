@@ -1,0 +1,14 @@
+<div class="bip_migrated_status">
+	<%= bip_pool.migrated %>
+	<% if bip_pool.migrated %>
+		<%= form_for [@bip_config, bip_pool] do |f| %>
+			<%= f.hidden_field :migrated, :value => false %>
+			<%= f.submit "Not Migrated!" %>
+		<% end %>
+	<% else %>
+		<%= form_for [@bip_config, bip_pool] do |f| %>
+			<%= f.hidden_field :migrated, :value => true %>
+			<%= f.submit "Migrated!" %>
+		<% end %>
+	<% end %>
+</div>

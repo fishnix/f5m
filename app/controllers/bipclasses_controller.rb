@@ -21,10 +21,28 @@ class BipclassesController < ApplicationController
       end
   end
   
-  def migrate
+  def update
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipclass = @bip_config.bipclasses.find(params[:id])
-    @bipclass.update_attribute(:migrated, true)
-  end
 
+    if @bipclass.update_attributes(params[:bipclass])
+      respond_to do |format|
+        #format.html { redirect_to bip_config_bipclasses_path }
+        #format.xml  { head :ok }
+        format.html do
+          if request.xhr?
+            render :partial => "show", :locals => { :bip_class => @bipclass } , :layout => false, :status => :created
+          else
+            redirect_to bip_config_bipclasses_path
+          end
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @recipe.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
 end

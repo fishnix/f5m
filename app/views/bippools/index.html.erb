@@ -14,18 +14,10 @@
 	</tr>
 	<% @bippools.each do |bip_pool| %>
 		<tr>
-			<td><%= bip_pool.migrated %></td>
+			<td><%= render :partial => "migrated", :locals => { :bip_pool => bip_pool } %></td>
 			<td><%= bip_pool.name %><br /></td>
-			<td>
-				<% bip_pool.bipmembers.each do |m| %>
-					<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id), :remote => true %>:<%= m.port %><br />
-				<% end %>
-			</td>
-			<td>
-				<% bip_pool.bipmonitors.each do |m| %>
-					<%= link_to m.name, bip_config_bipmonitor_path(@bip_config.id, m.id), :remote => true %><br />
-				<% end %>
-			</td>
+			<td><%= render :partial => "members", :locals => { :bip_pool => bip_pool } %></td>
+			<td><%= render :partial => "monitors", :locals => { :bip_pool => bip_pool } %></td>
 		</tr>
 	<% end %>
 </table>

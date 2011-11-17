@@ -30,7 +30,7 @@
 	</tr>
 	<% @bipvirtuals.each do |bip_virtual| %>
 		<tr>
-			<td><%= bip_virtual.migrated %></td>
+			<td><%= render :partial => "migrated", :locals => { :bip_virtual => bip_virtual } %></td>
 			<td><%= bip_virtual.name %></td>
 			<td><%= bip_virtual.content %></td>
 			<td><%= bip_virtual.enable %></td>
@@ -43,11 +43,7 @@
 		  	<td><%= bip_virtual.snatpool %></td>
 		  	<td><%= bip_virtual.srcport %></td>
 		  	<td><%= bip_virtual.type %></td>
-			<td>
-				<% bip_virtual.bippools.each do |p| %>
-					<%= link_to p.name, bip_config_bippool_path(@bip_config.id,p.id), :remote => true %><br />
-				<% end %>
-			</td>
+			<td><%= render :partial => "pools", :locals => { :bip_virtual => bip_virtual } %></td>
 		  	<td><%= bip_virtual.persist %></td>
 		  	<td><%= bip_virtual.fb_persist %></td>
 			<td><%= bip_virtual.rules %></td>

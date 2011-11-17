@@ -17,3 +17,9 @@ tr:nth-child(2n+1) {
 tr:nth-child(2n) {
   background-color: #82CAFF;
 }
+
+.migrated-image img {
+  vertical-align: middle;
+  max-height:50px;
+  max-width: 50px;
+}
