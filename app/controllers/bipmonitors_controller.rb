@@ -22,16 +22,7 @@ class BipmonitorsController < ApplicationController
   def update
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipmonitor = @bip_config.bipmonitors.find(params[:id])
-
-    respond_to do |format|
-      if @bipmonitor.update_attributes(params[:bipmonitor])
-        format.html { redirect_to bip_config_bipmonitors_path }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @recipe.errors, :status => :unprocessable_entity }
-      end
-    end
+    @bipmonitor.update_attributes(params[:bipmonitor])
   end
 
 end

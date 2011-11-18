@@ -1,14 +1,7 @@
-<div class="bip_migrated_status">
-	<%= bip_class.migrated %>
+<%= div_for(bip_class, :class => "bip_migration_status") do %>
 	<% if bip_class.migrated %>
-		<%= form_for [@bip_config, bip_class], :remote => true do |f| %>
-			<%= f.hidden_field :migrated, :value => false %>
-			<%= f.submit "Not Migrated!" %>
-		<% end %>
+		<%= link_to "Not Migrated", bip_config_bipclass_unmigrate_path(@bip_config.id, bip_class.id), :method => :put, :remote => true %>
 	<% else %>
-		<%= form_for [@bip_config, bip_class], :remote => true do |f| %>
-			<%= f.hidden_field :migrated, :value => true %>
-			<%= f.submit "Migrated!" %>
-		<% end %>
+		<%= link_to "Migrated", bip_config_bipclass_migrate_path(@bip_config.id, bip_class.id), :method => :put, :remote => true %>
 	<% end %>
-</div>
+<% end %>

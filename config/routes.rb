@@ -16,7 +16,10 @@ F5m::Application.routes.draw do
 
   resources :bip_configs do
     resources :virtuals
-    resources :bipclasses
+    resources :bipclasses do
+        put 'migrate'
+        put 'unmigrate'
+      end
     resources :bipmonitors
     resources :bippools
     resources :bipselfips
