@@ -5,6 +5,7 @@
 		<th>Members</th>
 		<th>Monitors</th>
 		<th>Content</th>
+		<th>Migrated</th>
 	</tr>
 	<tr>
 		<td>
@@ -21,6 +22,15 @@
 			<% end %>
 		</td>
 		<td><pre><%= @bippool.content %></pre></td>
+		<td>
+			<div class="migrated-image">
+				<% if @bippool.migrated %>
+					<%= image_tag "green-check.png" %>
+				<% else %>
+					<%= image_tag "red-x.png" %>
+				<% end %>
+			</div>
+		</td>
 	</tr>
 </table>
 </div>

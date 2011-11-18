@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005221926) do
+ActiveRecord::Schema.define(:version => 20111115185434) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "migrated"
   end
 
   create_table "bipmembers", :force => true do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.integer  "bip_config_id"
     t.string   "ip"
     t.string   "port"
+    t.boolean  "migrated"
   end
 
   create_table "bipmonitors", :force => true do |t|
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "migrated"
   end
 
   create_table "bipnodes", :force => true do |t|
@@ -58,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.string   "monitor"
     t.string   "screen"
     t.boolean  "updown"
+    t.boolean  "migrated"
   end
 
   create_table "bippoolmonitors", :force => true do |t|
@@ -77,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.string   "lbmethod"
     t.text     "members"
     t.text     "monitors"
+    t.boolean  "migrated"
   end
 
   create_table "bippoolvirtuals", :force => true do |t|
@@ -91,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "migrated"
   end
 
   create_table "bipselfips", :force => true do |t|
@@ -128,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20111005221926) do
     t.text     "rules"
     t.text     "vlans"
     t.text     "httpclasses"
+    t.boolean  "migrated"
   end
 
 end

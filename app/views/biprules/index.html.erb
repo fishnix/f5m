@@ -7,17 +7,15 @@
 
 <table>
 	<tr>
+		<th>Migrated</th>
 		<th>Name</th>
 		<th>Content</th>
 	</tr>
 	<% @biprules.each do |bip_rule| %>
 		<tr>
-		<td><%= bip_rule.name %></td>
-		<td><pre>
-		<% bip_rule.content.each do |m| %>
-			<%= m %><br />
-		<% end %>
-		</pre></td>
+			<td><%= render :partial => "migrated", :locals => { :bip_rule => bip_rule } %></td>
+			<td><%= bip_rule.name %></td>
+			<td><%= render :partial => "content", :locals => { :bip_rule => bip_rule } %></td>
 		</tr>
 	<% end %>
 </table>

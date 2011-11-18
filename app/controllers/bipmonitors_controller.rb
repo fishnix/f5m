@@ -5,6 +5,7 @@ class BipmonitorsController < ApplicationController
     
     @bipmonitors.each do |m|
       m.content = m.content.nil? ? ['monitorroot'] : m.content.strip.split(/\n/)
+      #m.migrated = m.migrated.nil? ? false : m.migrated
     end
 
     respond_to do |format|
@@ -16,6 +17,24 @@ class BipmonitorsController < ApplicationController
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipmonitor = @bip_config.bipmonitors.find(params[:id])
     @bipmon = @bipmonitor.content.nil? ? ['monitorroot'] : @bipmonitor.content.strip.split(/\n/)
+  end
+  
+  def update
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipmonitor = @bip_config.bipmonitors.find(params[:id])
+    @bipmonitor.update_attributes(params[:bipmonitor])
+  end
+
+  def migrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipmonitor = @bip_config.bipmonitors.find(params[:bipmonitor_id])
+    @bipmonitor.update_attributes(:migrated => true)
+  end
+  
+  def unmigrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipmonitor = @bip_config.bipmonitors.find(params[:bipmonitor_id])
+    @bipmonitor.update_attributes(:migrated => false)
   end
 
 end

@@ -8,6 +8,7 @@
 		<th>Limit</th>
 		<th>Ratio</th>
 		<th>Enabled</th>
+		<th>Migrated</th>
 	</tr>
 	<tr>
 		<td><%= @bipnode.name %></td>
@@ -17,6 +18,15 @@
 		<td><%= @bipnode.limit %></td>
 		<td><%= @bipnode.ratio %></td>
 		<td><%= @bipnode.updown %></td>
+		<td>
+			<div class="migrated-image">
+				<% if @bipnode.migrated %>
+					<%= image_tag "green-check.png" %>
+				<% else %>
+					<%= image_tag "red-x.png" %>
+				<% end %>
+			</div>
+		</td>
 	</tr>
 </table>
 </div>

@@ -1,0 +1,3 @@
+<% bip_pool.bipmembers.each do |m| %>
+	<%= link_to m.bipnode.name, bip_config_bipnode_path(@bip_config.id,m.bipnode.id), :remote => true %>:<%= m.port %><br />
+<% end %>

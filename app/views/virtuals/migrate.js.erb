@@ -1,0 +1,1 @@
+$('div#virtual_<%= @virtual.id %>').fadeOut(500,function(){ $(this).html('<%= escape_javascript(render(:partial => "migrated", :locals => { :bip_virtual => @virtual })) %>').fadeIn(500); });

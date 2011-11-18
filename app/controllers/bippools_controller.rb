@@ -14,4 +14,22 @@ class BippoolsController < ApplicationController
     #@bipnodes = @bippool.bipnodes.all
   end
 
+  def update
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bippool = @bip_config.bippools.find(params[:id])
+    @bippool.update_attributes(params[:bippool])
+  end
+  
+  def migrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bippool = @bip_config.bippools.find(params[:bippool_id])
+    @bippool.update_attributes(:migrated => true)
+  end
+  
+  def unmigrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bippool = @bip_config.bippools.find(params[:bippool_id])
+    @bippool.update_attributes(:migrated => false)
+  end
+  
 end

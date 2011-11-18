@@ -1,0 +1,12 @@
+<%= div_for(bip_pool, :class => "bip_migration_status") do %>
+	<% if bip_pool.migrated %>
+		<div class="bip_object_migrated">
+		Migrated.<br />
+		<%= link_to "Not Migrated?, (Click Here)", bip_config_bippool_unmigrate_path(@bip_config.id, bip_pool.id), 
+									:method => :put, :remote => true %>
+		</div>
+	<% else %>
+		<%= link_to "Mark Migrated", bip_config_bippool_migrate_path(@bip_config.id, bip_pool.id), 
+								:method => :put, :remote => true %>
+	<% end %>
+<% end %>
