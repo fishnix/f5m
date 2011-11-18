@@ -1,4 +1,10 @@
 
+body {
+	margin: 0 auto;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	background: #f0f0f0;
+}
+
 th {
   background-color: #151B8D;
   color: #fff;
@@ -20,7 +26,15 @@ tr:nth-child(2n) {
 
 .migrated-image img {
   vertical-align: middle;
-  max-height:50px;
-  max-width: 50px;
+  max-height:30px;
+  max-width: 30px;
 }
 
+.bip_object_migrated a {
+  font-size: 8px;
+  text-decoration: none;
+}
+
+.bip_migration_status a {
+  text-decoration: none;
+}

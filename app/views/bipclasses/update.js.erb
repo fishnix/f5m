@@ -1,1 +1,0 @@
-$('div#bipclass_<%= @bipclass.id %>').fadeOut(500,function(){ $(this).html('<%= escape_javascript(render(:partial => "migrated", :locals => { :bip_class => @bipclass })) %>').fadeIn(500); });

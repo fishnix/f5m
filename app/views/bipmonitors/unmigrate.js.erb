@@ -1,0 +1,1 @@
+$('div#bipmonitor_<%= @bipmonitor.id %>').fadeOut(500,function(){ $(this).html('<%= escape_javascript(render(:partial => "migrated", :locals => { :bip_monitor => @bipmonitor })) %>').fadeIn(500); });

@@ -15,16 +15,31 @@ F5m::Application.routes.draw do
   #get "bipselfips/show"
 
   resources :bip_configs do
-    resources :virtuals
+    resources :bipselfips
+    resources :virtuals do
+        put 'migrate'
+        put 'unmigrate'
+      end
     resources :bipclasses do
         put 'migrate'
         put 'unmigrate'
       end
-    resources :bipmonitors
-    resources :bippools
-    resources :bipselfips
-    resources :biprules
-    resources :bipnodes
+    resources :bipmonitors do
+        put 'migrate'
+        put 'unmigrate'
+      end
+    resources :bippools do
+        put 'migrate'
+        put 'unmigrate'
+      end
+    resources :biprules do
+        put 'migrate'
+        put 'unmigrate'
+      end
+    resources :bipnodes do
+        put 'migrate'
+        put 'unmigrate'
+      end
   end
   
   match 'bip_configs/upload' => 'bip_configs#upload'

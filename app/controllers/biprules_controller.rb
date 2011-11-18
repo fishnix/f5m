@@ -22,4 +22,16 @@ class BiprulesController < ApplicationController
     @biprule.update_attributes(params[:biprule])
   end
 
+  def migrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @biprule = @bip_config.biprules.find(params[:biprule_id])
+    @biprule.update_attributes(:migrated => true)
+  end
+  
+  def unmigrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @biprule = @bip_config.biprules.find(params[:biprule_id])
+    @biprule.update_attributes(:migrated => false)
+  end
+  
 end
