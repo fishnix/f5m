@@ -5,7 +5,13 @@ gem 'rails', '3.0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+if defined?(JRUBY_VERSION)
+  gem 'jdbc-sqlite3'
+  gem 'activerecord-jdbc-adapter'
+  gem 'activerecord-jdbcsqlite3-adapter'
+else
+  gem 'sqlite3'
+end
 
 gem 'jquery-rails', '>= 1.0.12'
 

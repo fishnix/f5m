@@ -1,5 +1,12 @@
 Barebones, quick and dirty F5 configuration parser.
 - Work in progress
 - May not parse everything (we don't use every feature and so I didn't include every feature)
-- Will include a "migrated" flag since the purpose was to help us
+- Includes a "migrated" flag since the purpose was to help us
   find deps and keep track of what we've moved to our new pair of LTMs
+
+TODO:
+ - parse profiles
+ - update virtuals view to include jquery links for rules + profiles
+ - add contact information model and link to virtuals
+ - Dependency tracking on virtual for "ready to migrate"
+ - Diff parsing so data can be updated with newer bigip.conf's
