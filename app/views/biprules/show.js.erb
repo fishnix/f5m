@@ -1,0 +1,3 @@
+var newDiv = $(document.createElement('div'));
+newDiv.html('<%= escape_javascript(render(:partial => @biprule)) %>'); 
+newDiv.dialog({ title: 'iRule' , modal: true, width: 'auto', heigh: 'auto' }).draggable();

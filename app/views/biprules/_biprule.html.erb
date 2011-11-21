@@ -1,0 +1,20 @@
+<div class="modal">
+<table>
+	<tr>
+		<th>iRule Name</th>
+		<th>Migrated</th>
+	</tr>
+	<tr>
+		<td><%= @biprule.name %></td>
+		<td>
+			<div class="migrated-image">
+				<% if @biprule.migrated %>
+					<%= image_tag "green-check.png" %>
+				<% else %>
+					<%= image_tag "red-x.png" %>
+				<% end %>
+			</div>
+		</td>
+	</tr>
+</table>
+</div>

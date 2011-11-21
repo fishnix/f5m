@@ -107,6 +107,11 @@ class BipConfigsController < ApplicationController
       bippool = Bippool.find_or_create_by_name_and_bip_config_id(c[:pool], @data.id) unless c[:pool].nil?
       poolvirtual = Bippoolvirtual.create(:bippool_id => bippool.id, :virtual_id => virtual.id, :bip_config_id => @data.id ) unless c[:pool].nil?
       
+      c[:rules].each do |r|
+        rule = Biprule.find_or_create_by_name_and_bip_config_id(r, @data.id)
+        virtualrule = Virtualrule.create(:virtual_id => virtual.id, :biprule_id => rule.id, :bip_config_id => @data.id )
+      end
+      
     end
     
     redirect_to bip_configs_path

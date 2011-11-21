@@ -1,0 +1,23 @@
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Content</th>
+		<th>Migrated</th>
+	</tr>
+	<tr>
+		<td><%= @bipvirtual.name %></td>
+		<td><% @bipvirtual.content.each_line do |c| %>
+				<%= c %><br />
+			<% end %>
+		</td>
+		<td>
+			<div class="migrated-image">
+				<% if @bipvirtual.migrated %>
+					<%= image_tag "green-check.png" %>
+				<% else %>
+					<%= image_tag "red-x.png" %>
+				<% end %>
+			</div>
+		</td>
+	</tr>
+</table>

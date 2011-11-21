@@ -10,6 +10,8 @@ class VirtualsController < ApplicationController
   end
 
   def show
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipvirtual = @bip_config.virtuals.find(params[:id])
   end
 
   def update

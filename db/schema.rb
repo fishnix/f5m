@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115185434) do
+ActiveRecord::Schema.define(:version => 20111121162214) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -109,6 +109,12 @@ ActiveRecord::Schema.define(:version => 20111115185434) do
     t.integer  "unit"
     t.boolean  "floating"
     t.string   "vlan"
+  end
+
+  create_table "virtualrules", :force => true do |t|
+    t.integer "virtual_id"
+    t.integer "biprule_id"
+    t.integer "bip_config_id"
   end
 
   create_table "virtuals", :force => true do |t|

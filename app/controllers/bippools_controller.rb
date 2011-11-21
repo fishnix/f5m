@@ -1,4 +1,5 @@
 class BippoolsController < ApplicationController
+
   def index
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bippools = @bip_config.bippools.all

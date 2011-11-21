@@ -31,7 +31,7 @@
 	<% @bipvirtuals.each do |bip_virtual| %>
 		<tr>
 			<td><%= render :partial => "migrated", :locals => { :bip_virtual => bip_virtual } %></td>
-			<td><%= bip_virtual.name %></td>
+			<td><%= link_to bip_virtual.name, bip_config_virtual_path(@bip_config.id, bip_virtual.id), :remote => true %></td>
 			<td><%= bip_virtual.content %></td>
 			<td><%= bip_virtual.enable %></td>
 		 	<td><%= bip_virtual.destination %></td>
@@ -46,7 +46,7 @@
 			<td><%= render :partial => "pools", :locals => { :bip_virtual => bip_virtual } %></td>
 		  	<td><%= bip_virtual.persist %></td>
 		  	<td><%= bip_virtual.fb_persist %></td>
-			<td><%= bip_virtual.rules %></td>
+			<td><%= render :partial => "rules", :locals => { :bip_virtual => bip_virtual } %></td>
 			<td><%= bip_virtual.profiles %></td>
 			<td><%= bip_virtual.httpclasses %></td>
 			<td><%= bip_virtual.vlans %><td>

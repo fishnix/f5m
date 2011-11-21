@@ -14,6 +14,9 @@ class BiprulesController < ApplicationController
   end
 
   def show
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @biprule = @bip_config.biprules.find(params[:id])
+    #@bipmon = @bipmonitor.content.nil? ? ['monitorroot'] : @bipmonitor.content.strip.split(/\n/)
   end
   
   def update
