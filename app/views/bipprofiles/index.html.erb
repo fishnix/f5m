@@ -1,27 +1,25 @@
-<h1>Listing bipprofiles</h1>
+<p id="notice"><%= notice %></p>
+
+<h3>Bipprofiles</h3>
+
+<b>Name:</b>
+<%= @bip_config.name %>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Type</th>
-    <th>Content</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bipprofiles.each do |bipprofile| %>
-  <tr>
-    <td><%= bipprofile.name %></td>
-    <td><%= bipprofile.type %></td>
-    <td><%= bipprofile.content %></td>
-    <td><%= link_to 'Show', bipprofile %></td>
-    <td><%= link_to 'Edit', edit_bipprofile_path(bipprofile) %></td>
-    <td><%= link_to 'Destroy', bipprofile, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<tr>
+		<th>Migrated</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Content</th>
+	</tr>
+	<% @bipprofiles.each do |bip_profile| %>
+		<tr>
+			<td><%= render :partial => "migrated", :locals => { :bip_profile => bip_profile } %></td>
+			<td><%= bip_profile.name %></td>
+			<td><%= bip_profile.type %></td>
+			<td><%= render :partial => "content", :locals => { :bip_profile => bip_profile } %></td>
+		</tr>
+	<% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Bipprofile', new_bipprofile_path %>
+<%= link_to 'Back', bip_config_path(@bip_config) %>

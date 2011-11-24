@@ -23,6 +23,7 @@ class BipConfigsController < ApplicationController
     @bipcount[:bipnodes]    = @bip_config.bipnodes.count
     @bipcount[:biprules]    = @bip_config.biprules.count
     @bipcount[:bipclasses]  = @bip_config.bipclasses.count
+    @bipcount[:bipprofiles] = @bip_config.bipprofiles.count 
     
     
     respond_to do |format|

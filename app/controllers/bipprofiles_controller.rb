@@ -1,83 +1,37 @@
 class BipprofilesController < ApplicationController
-  # GET /bipprofiles
-  # GET /bipprofiles.xml
   def index
-    @bipprofiles = Bipprofile.all
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipprofiles = @bip_config.bipprofiles.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bipprofiles }
+    @bipprofiles.each do |m|
+      m.content = m.content.nil? ? ['parse error'] : m.content.strip.split(/\n/)
     end
-  end
-
-  # GET /bipprofiles/1
-  # GET /bipprofiles/1.xml
-  def show
-    @bipprofile = Bipprofile.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @bipprofile }
     end
   end
 
-  # GET /bipprofiles/new
-  # GET /bipprofiles/new.xml
-  def new
-    @bipprofile = Bipprofile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @bipprofile }
-    end
+  def show
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipprofile = @bip_config.bipprofiles.find(params[:id])
   end
-
-  # GET /bipprofiles/1/edit
-  def edit
-    @bipprofile = Bipprofile.find(params[:id])
-  end
-
-  # POST /bipprofiles
-  # POST /bipprofiles.xml
-  def create
-    @bipprofile = Bipprofile.new(params[:bipprofile])
-
-    respond_to do |format|
-      if @bipprofile.save
-        format.html { redirect_to(@bipprofile, :notice => 'Bipprofile was successfully created.') }
-        format.xml  { render :xml => @bipprofile, :status => :created, :location => @bipprofile }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @bipprofile.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /bipprofiles/1
-  # PUT /bipprofiles/1.xml
+  
   def update
-    @bipprofile = Bipprofile.find(params[:id])
-
-    respond_to do |format|
-      if @bipprofile.update_attributes(params[:bipprofile])
-        format.html { redirect_to(@bipprofile, :notice => 'Bipprofile was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @bipprofile.errors, :status => :unprocessable_entity }
-      end
-    end
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipprofile = @bip_config.bipprofiles.find(params[:id])
+    @bipprofile.update_attributes(params[:bipprofile])
   end
 
-  # DELETE /bipprofiles/1
-  # DELETE /bipprofiles/1.xml
-  def destroy
-    @bipprofile = Bipprofile.find(params[:id])
-    @bipprofile.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(bipprofiles_url) }
-      format.xml  { head :ok }
-    end
+  def migrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipprofile = @bip_config.bipprofiles.find(params[:bipprofile_id])
+    @bipprofile.update_attributes(:migrated => true)
+  end
+  
+  def unmigrate
+    @bip_config = BipConfig.find(params[:bip_config_id])
+    @bipprofile = @bip_config.bipprofiles.find(params[:bipprofile_id])
+    @bipprofile.update_attributes(:migrated => false)
   end
 end
