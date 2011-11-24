@@ -338,4 +338,29 @@ class ApplicationController < ActionController::Base
     rules
   end
   
+  # Pull profiles from bigIP conf
+  def parse_profiles(confdata)
+    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user'
+    regex = /^profile\s+([A-Za-z0-9_-]+)\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
+   
+    profiles = Hash.new
+    confdata.scan(regex) do |m|
+      name = m[1]
+      
+      c = Hash.new
+      c[:type] = m[0]
+      c[:full] = m[2]
+      
+      logger.debug "DEBUG PROFILE EVERYTHING: " + m.to_s
+      
+      logger.debug "DEBUG PROFILE Name: " + name.to_s
+      logger.debug "DEBUG PROFILE Type: " + c[:type].to_s
+      logger.debug "DEBUG PROFILE Content: " + c[:full].to_s
+      
+      profiles[name] = c
+    end
+    
+    profiles
+  end
+  
 end

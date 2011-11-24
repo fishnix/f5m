@@ -20,6 +20,10 @@ F5m::Application.routes.draw do
         put 'migrate'
         put 'unmigrate'
       end
+    resources :bipprofiles do
+        put 'migrate'
+        put 'unmigrate'
+      end
     resources :bipclasses do
         put 'migrate'
         put 'unmigrate'

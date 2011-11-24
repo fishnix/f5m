@@ -1,0 +1,27 @@
+<h1>Listing bipprofiles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bipprofiles.each do |bipprofile| %>
+  <tr>
+    <td><%= bipprofile.name %></td>
+    <td><%= bipprofile.type %></td>
+    <td><%= bipprofile.content %></td>
+    <td><%= link_to 'Show', bipprofile %></td>
+    <td><%= link_to 'Edit', edit_bipprofile_path(bipprofile) %></td>
+    <td><%= link_to 'Destroy', bipprofile, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bipprofile', new_bipprofile_path %>

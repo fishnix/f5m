@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bipprofile.name %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @bipprofile.type %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @bipprofile.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_bipprofile_path(@bipprofile) %> |
+<%= link_to 'Back', bipprofiles_path %>

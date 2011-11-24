@@ -55,6 +55,10 @@ class BipConfigsController < ApplicationController
                         :netmask => c[:netmask], :unit => c[:unit], :floating => c[:floating], :vlan => c[:vlan])
     end  
     
+    parse_profiles(filedata).each do |n,c|
+      Bipprofile.create(:name => n, :bip_config_id => @data.id, :type => c[:type], :content => c[:full], :migrated => false )
+    end
+    
     parse_rules(filedata).each do |n,c|
       Biprule.create(:name => n, :content => c, :bip_config_id => @data.id, :migrated => false)
     end
@@ -110,6 +114,11 @@ class BipConfigsController < ApplicationController
       c[:rules].each do |r|
         rule = Biprule.find_or_create_by_name_and_bip_config_id(r, @data.id)
         virtualrule = Virtualrule.create(:virtual_id => virtual.id, :biprule_id => rule.id, :bip_config_id => @data.id )
+      end
+      
+      c[:profiles].each do |p|
+        profile = Bipprofile.find_or_create_by_name_and_bip_config_id(p, @data.id) unless c[:profiles].nil?
+        bipprofilevirtual = Bipprofilevirtual.create(:virtual_id => virtual.id, :bipprofile_id => profile.id, :bip_config_id => @data.id) unless c[:profiles].nil?
       end
       
     end
