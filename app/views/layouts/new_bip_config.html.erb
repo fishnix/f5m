@@ -9,15 +9,6 @@
 <body>
 
 <div id="headernav">
-	<% if @bip_config.nil? %>
-	<% else %>
-		<div id='topheader'>
-			<%= render :partial => 'bip_configs/topheader', :locals => { :bip_config => @bipconfig } %>
-		</div>
-		<nav>
-			<%= render :partial => 'bip_configs/topmenu', :locals => { :bip_config => @bipconfig } %>
-		</nav>
-	<% end %>
 </div>
 
 <div id='content'>

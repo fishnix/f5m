@@ -1,4 +1,6 @@
 class BipConfigsController < ApplicationController
+  layout :resolve_layout
+  
   # GET /bip_configs
   # GET /bip_configs.xml
   def index
@@ -43,7 +45,7 @@ class BipConfigsController < ApplicationController
     end
   end
 
-  def upload
+  def upload     
     file_param = params[:upload][:file]
     filedata = file_param.read
     
@@ -140,5 +142,16 @@ class BipConfigsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+
+    def resolve_layout
+      case action_name
+      when "new", "upload"
+        "new_bip_config"
+      else
+        "application"
+      end
+    end
   
 end
