@@ -22,6 +22,17 @@
 	-webkit-border-radius: 5px;
 }
 
+#topheader h1 {
+	padding: 0px 0;
+	margin-left: 28px;
+	float: left;
+	margin-right: 0px;
+	width: 100%;
+	line-height: 36px;
+	text-align: left;
+	color: #fff;
+}
+
 #topheader h3 {
 	padding: 0px 0;
 	margin-top: 6px;

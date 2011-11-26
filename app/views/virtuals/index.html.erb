@@ -42,7 +42,7 @@
 		  	<td><%= bip_virtual.persist %></td>
 		  	<td><%= bip_virtual.fb_persist %></td>
 			<td><%= render :partial => "rules", :locals => { :bip_virtual => bip_virtual } %></td>
-			<td><%= bip_virtual.profiles %></td>
+			<td><%= render :partial => "profiles", :locals => { :bip_virtual => bip_virtual } %></td>
 			<td><%= bip_virtual.httpclasses %></td>
 			<td><%= bip_virtual.vlans %><td>
 		</tr>

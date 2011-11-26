@@ -10,10 +10,9 @@ header, footer, aside, nav, article {
 }
 
 body {
-	margin: 0 auto;
+	margin: 20px 20px 20px 20px;
 	font: 13px/22px Helvetica, Arial, sans-serif;
 	background: #f0f0f0;
-	width: 1000px;
 }
 
 h1 {
@@ -114,4 +113,7 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+.modal {
 }
