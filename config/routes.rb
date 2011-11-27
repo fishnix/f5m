@@ -1,6 +1,8 @@
 F5m::Application.routes.draw do
   
-  root :to => "bip_configs#index"
+  root :to => 'bip_configs#index'
+  
+  resources :contacts
     
   #get "bipclasses/index"
   #get "bipclasses/show"

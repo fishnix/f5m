@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  contact_id: 1
+  virtual_id: 1
+  bip_config_id: 1
+
+two:
+  contact_id: 1
+  virtual_id: 1
+  bip_config_id: 1

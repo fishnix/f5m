@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123205053) do
+ActiveRecord::Schema.define(:version => 20111127021225) do
 
   create_table "bip_configs", :force => true do |t|
     t.string   "name"
@@ -125,6 +125,21 @@ ActiveRecord::Schema.define(:version => 20111123205053) do
     t.integer  "unit"
     t.boolean  "floating"
     t.string   "vlan"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contactvirtuals", :force => true do |t|
+    t.integer  "contact_id"
+    t.integer  "virtual_id"
+    t.integer  "bip_config_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "virtualrules", :force => true do |t|
