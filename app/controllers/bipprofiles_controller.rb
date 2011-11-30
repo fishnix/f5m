@@ -3,9 +3,10 @@ class BipprofilesController < ApplicationController
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipprofiles = @bip_config.bipprofiles.all
 
-    @bipprofiles.each do |m|
-      m.content = m.content.nil? ? ['parse error'] : m.content.strip.split(/\n/)
-    end
+    #@bipprofiles.each do |m|
+    #  m.content = m.content.nil? ? ['parse error'] : m.content.strip.split(/\n/)
+    #end
+    #<td><%= render :partial => "content", :locals => { :bip_profile => bip_profile } %></td>
 
     respond_to do |format|
       format.html # show.html.erb

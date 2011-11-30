@@ -12,7 +12,7 @@
 			<td><%= render :partial => "migrated", :locals => { :bip_profile => bip_profile } %></td>
 			<td><%= bip_profile.name %></td>
 			<td><%= bip_profile.type %></td>
-			<td><%= render :partial => "content", :locals => { :bip_profile => bip_profile } %></td>
+			<td><pre><%= bip_profile.content %></pre></td>
 		</tr>
 	<% end %>
 </table>

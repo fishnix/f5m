@@ -4,9 +4,10 @@ class BiprulesController < ApplicationController
     @bip_config = BipConfig.find(params[:bip_config_id])
     @biprules = @bip_config.biprules.all
 
-    @biprules.each do |m|
-      m.content = m.content.nil? ? ['parse error'] : m.content.strip.split(/\n/)
-    end
+    #@biprules.each do |m|
+    #  m.content = m.content.nil? ? ['parse error'] : m.content.strip.split(/\n/)
+    #end
+    #<td><%= render :partial => "content", :locals => { :bip_rule => bip_rule } %></td>
 
     respond_to do |format|
       format.html # show.html.erb

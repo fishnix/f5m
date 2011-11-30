@@ -3,10 +3,11 @@ class BipmonitorsController < ApplicationController
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipmonitors = @bip_config.bipmonitors.all
     
-    @bipmonitors.each do |m|
-      m.content = m.content.nil? ? ['monitorroot'] : m.content.strip.split(/\n/)
-      #m.migrated = m.migrated.nil? ? false : m.migrated
-    end
+    #@bipmonitors.each do |m|
+    #  m.content = m.content.nil? ? ['monitorroot'] : m.content.strip.split(/\n/)
+    #  #m.migrated = m.migrated.nil? ? false : m.migrated
+    #end
+    #<%= render :partial => "content", :locals => { :bip_monitor => bip_monitor } %>
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +25,7 @@ class BipmonitorsController < ApplicationController
     @bipmonitor = @bip_config.bipmonitors.find(params[:id])
     @bipmonitor.update_attributes(params[:bipmonitor])
   end
-
+  
   def migrate
     @bip_config = BipConfig.find(params[:bip_config_id])
     @bipmonitor = @bip_config.bipmonitors.find(params[:bipmonitor_id])

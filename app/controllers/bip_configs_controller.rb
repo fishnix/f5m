@@ -26,7 +26,13 @@ class BipConfigsController < ApplicationController
     @bipcount[:biprules]    = @bip_config.biprules.count
     @bipcount[:bipclasses]  = @bip_config.bipclasses.count
     @bipcount[:bipprofiles] = @bip_config.bipprofiles.count 
-    
+    @bipcount[:virtuals_migrated]     = @bip_config.virtuals.find_all_by_migrated(true).count  
+    @bipcount[:bippools_migrated]     = @bip_config.bippools.find_all_by_migrated(true).count    
+    @bipcount[:bipmonitors_migrated]  = @bip_config.bipmonitors.find_all_by_migrated(true).count    
+    @bipcount[:bipnodes_migrated]     = @bip_config.bipnodes.find_all_by_migrated(true).count    
+    @bipcount[:biprules_migrated]     = @bip_config.biprules.find_all_by_migrated(true).count    
+    @bipcount[:bipclasses_migrated]   = @bip_config.bipclasses.find_all_by_migrated(true).count    
+    @bipcount[:bipprofiles_migrated]  = @bip_config.bipprofiles.find_all_by_migrated(true).count    
     
     respond_to do |format|
       format.html # show.html.erb

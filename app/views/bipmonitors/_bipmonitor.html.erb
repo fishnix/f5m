@@ -7,10 +7,7 @@
 	</tr>
 	<tr>
 		<td><%= @bipmonitor.name %></td>
-		<td><% @bipmon.each do |m| %>
-				<%= m %><br />
-			<% end %>
-		</td>
+		<td><pre><%= @bipmonitor.content %></pre></td>
 		<td>
 			<div class="migrated-image">
 				<% if @bipmonitor.migrated %>

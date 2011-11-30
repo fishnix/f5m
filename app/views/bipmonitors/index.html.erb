@@ -10,7 +10,7 @@
 		<tr>
 			<td><%= render :partial => "migrated", :locals => { :bip_monitor => bip_monitor } %></td>
 			<td><%= bip_monitor.name %></td>
-			<td><%= render :partial => "content", :locals => { :bip_monitor => bip_monitor } %></td>
+			<td><pre><%= bip_monitor.content %></pre></td>
 		</tr>
 	<% end %>
 </table>

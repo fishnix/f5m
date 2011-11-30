@@ -13,6 +13,9 @@
 		<div id='topheader'>
 			<%= render :partial => 'bip_configs/homeheader' %>
 		</div>
+		<nav>
+			<%= render :partial => 'bip_configs/homemenu' %>
+		</nav>
 	<% else %>
 		<div id='topheader'>
 			<%= render :partial => 'bip_configs/topheader', :locals => { :bip_config => @bipconfig } %>

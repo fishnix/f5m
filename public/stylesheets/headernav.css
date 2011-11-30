@@ -1,9 +1,9 @@
 #headernav {
 	background-size: 100%;
 	background: #151B8D;
-	height: 90px;
+	height: 78px;
 	width: 1000px;
-	border-radius: 5px;
+	border-radius: 3px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	margin-top: 12px;
@@ -18,29 +18,15 @@
 	-khtml-background-size: 100%;
 
 	/* Border-radius not implemented yet */
- 	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
-
-#topheader h1 {
-	padding: 0px 0;
-	margin-left: 28px;
-	float: left;
-	margin-right: 0px;
-	width: 100%;
-	line-height: 36px;
-	text-align: left;
-	color: #fff;
+ 	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
 }
 
 #topheader h3 {
-	padding: 0px 0;
-	margin-top: 6px;
-	margin-left: 28px;
+	padding: 0px 0px 0px 0px;
+	margin: 12px 0px 0px 24px;
 	float: left;
 	display: block;
-	margin-right: 0px;
-	width: 100%;
 	font-size: 14px;
 	line-height: 22px;
 	text-align: left;
@@ -48,9 +34,17 @@
 	color: #fff;
 }
 
+#topheader h3 a {
+	margin: 0px 0px 0px 0px;
+	line-height: 22px;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #fff;
+}
+
 nav {
-  margin-top: 28px;
-  margin-right: 6px;
+  margin-top: 44px;
 }
 
 nav ul {
@@ -65,9 +59,9 @@ nav ul li {
 nav ul li a {
 	display: block;
 	margin-right: 0px;
-	width: 100px;
+	width: 90px;
 	font-size: 14px;
-	line-height: 22px;
+	line-height: 18px;
 	text-align: center;
 	text-decoration: none;
 	color: #fff;
@@ -76,11 +70,11 @@ nav ul li a {
 nav ul li a:hover {
 	color: #000000;
 	background: #B7CEEC;
-	border-radius: 22px;
+	border-radius: 6px;
 }
 
 nav ul li.selected a {
 	color: #fff;
 	background: #000000;
-	border-radius: 22px;
+	border-radius: 6px;
 }

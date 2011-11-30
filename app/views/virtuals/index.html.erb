@@ -4,17 +4,8 @@
 	<tr>
 		<th>Migrated</th>
 		<th>Name</th>
-		<th>Content</th>
 		<th>enable</th>
 	 	<th>destination</th>
-	  	<th>mask</th>
-	  	<th>mirror</th>
-	  	<th>limit</th>
-	  	<th>ip protocol</th>
-	  	<th>snat</th>
-	  	<th>snatpool</th>
-	  	<th>srcport</th>
-	  	<th>type</th>
 	  	<th>pool</th>
 	  	<th>persist</th>
 	  	<th>fb_persist</th>
@@ -27,17 +18,8 @@
 		<tr>
 			<td><%= render :partial => "migrated", :locals => { :bip_virtual => bip_virtual } %></td>
 			<td><%= link_to bip_virtual.name, bip_config_virtual_path(@bip_config.id, bip_virtual.id), :remote => true %></td>
-			<td><%= bip_virtual.content %></td>
 			<td><%= bip_virtual.enable %></td>
 		 	<td><%= bip_virtual.destination %></td>
-		  	<td><%= bip_virtual.mask %></td>
-		  	<td><%= bip_virtual.mirror %></td>
-		  	<td><%= bip_virtual.limit %></td>
-		  	<td><%= bip_virtual.ip_protocol %></td>
-		  	<td><%= bip_virtual.snat %></td>
-		  	<td><%= bip_virtual.snatpool %></td>
-		  	<td><%= bip_virtual.srcport %></td>
-		  	<td><%= bip_virtual.type %></td>
 			<td><%= render :partial => "pools", :locals => { :bip_virtual => bip_virtual } %></td>
 		  	<td><%= bip_virtual.persist %></td>
 		  	<td><%= bip_virtual.fb_persist %></td>

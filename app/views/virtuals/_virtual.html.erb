@@ -6,10 +6,7 @@
 	</tr>
 	<tr>
 		<td><%= @bipvirtual.name %></td>
-		<td><% @bipvirtual.content.each_line do |con| %>
-				<%= con %><br />
-			<% end %>
-		</td>
+		<td><pre><%= @bipvirtual.content %></pre></td>
 		<td>
 			<div class="migrated-image">
 				<% if @bipvirtual.migrated %>
