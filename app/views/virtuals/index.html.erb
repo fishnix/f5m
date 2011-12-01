@@ -4,6 +4,7 @@
 	<tr>
 		<th>Migrated</th>
 		<th>Name</th>
+		<th>Contact</th>
 		<th>enable</th>
 	 	<th>destination</th>
 	  	<th>pool</th>
@@ -18,6 +19,12 @@
 		<tr>
 			<td><%= render :partial => "migrated", :locals => { :bip_virtual => bip_virtual } %></td>
 			<td><%= link_to bip_virtual.name, bip_config_virtual_path(@bip_config.id, bip_virtual.id), :remote => true %></td>
+			<td>
+				<%= form_for bip_virtual, :url => bip_config_virtual_path(:bip_config_id => @bip_config.id, :id => bip_virtual.id) do |f| %>
+					<%= select(:virtual, :contact_id, options_for_select(@contacts.collect { |c| [ c.name, c.id ] }, bip_virtual.contact_id), { :include_blank => true }) %>
+					<%= f.submit %>
+				<% end %>
+			</td>
 			<td><%= bip_virtual.enable %></td>
 		 	<td><%= bip_virtual.destination %></td>
 			<td><%= render :partial => "pools", :locals => { :bip_virtual => bip_virtual } %></td>

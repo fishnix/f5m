@@ -4,46 +4,46 @@
 	</tr>
 	<tr>
 		<td></td>
-		<td><%= link_to "SelfIps", 	[@bip_config, :bipselfips]	%></td>
 		<td><%= link_to "Virtuals", [@bip_config, :virtuals ]	%></td>
-		<td><%= link_to "Pools", 	[@bip_config, :bippools ]	%></td>
-		<td><%= link_to "Nodes", 	[@bip_config, :bipnodes ]	%></td>
-		<td><%= link_to "Monitors", [@bip_config, :bipmonitors ]%></td>
 		<td><%= link_to "Profiles",	[@bip_config, :bipprofiles ]%></td>
 		<td><%= link_to "Rules", 	[@bip_config, :biprules ]	%></td>
 		<td><%= link_to "Classes", 	[@bip_config, :bipclasses ]	%></td>
+		<td><%= link_to "Pools", 	[@bip_config, :bippools ]	%></td>
+		<td><%= link_to "Monitors", [@bip_config, :bipmonitors ]%></td>
+		<td><%= link_to "Nodes", 	[@bip_config, :bipnodes ]	%></td>
+		<td><%= link_to "SelfIps", 	[@bip_config, :bipselfips]	%></td>
 	</tr>
 	<tr>
-		<td>Count</td>
-		<td>(<%= @bipcount[:bipselfips] 	%>)</td>
+		<td>Total</td>
 		<td>(<%= @bipcount[:virtuals] 	%>)</td>
-		<td>(<%= @bipcount[:bippools] 	%>)</td>
-		<td>(<%= @bipcount[:bipnodes]	%>)</td>
-		<td>(<%= @bipcount[:bipmonitors] %>)</td>
 		<td>(<%= @bipcount[:bipprofiles] 	%>)</td>
 		<td>(<%= @bipcount[:biprules] 	%>)</td>
 		<td>(<%= @bipcount[:bipclasses] 	%>)</td>
+		<td>(<%= @bipcount[:bippools] 	%>)</td>
+		<td>(<%= @bipcount[:bipmonitors] %>)</td>
+		<td>(<%= @bipcount[:bipnodes]	%>)</td>
+		<td>(<%= @bipcount[:bipselfips] 	%>)</td>
 	</tr>
 	<tr>
 		<td>Migrated</td>
-		<td>(N/A)</td>
 		<td>(<%= @bipcount[:virtuals_migrated] 	%>)</td>
-		<td>(<%= @bipcount[:bippools_migrated] 	%>)</td>
-		<td>(<%= @bipcount[:bipnodes_migrated]	%>)</td>
-		<td>(<%= @bipcount[:bipmonitors_migrated] %>)</td>
 		<td>(<%= @bipcount[:bipprofiles_migrated] 	%>)</td>
 		<td>(<%= @bipcount[:biprules_migrated] 	%>)</td>
 		<td>(<%= @bipcount[:bipclasses_migrated] %>)</td>
+		<td>(<%= @bipcount[:bippools_migrated] 	%>)</td>
+		<td>(<%= @bipcount[:bipmonitors_migrated] %>)</td>
+		<td>(<%= @bipcount[:bipnodes_migrated]	%>)</td>
+		<td>(N/A)</td>
 	</tr>
 	<tr>
 		<td>UnMigrated</td>
-		<td>(N/A)</td>
 		<td>(<%= @bipcount[:virtuals] - @bipcount[:virtuals_migrated] %>)</td>
-		<td>(<%= @bipcount[:bippools] - @bipcount[:bippools_migrated] %>)</td>
-		<td>(<%= @bipcount[:bipnodes] - @bipcount[:bipnodes_migrated] %>)</td>
-		<td>(<%= @bipcount[:bipmonitors] - @bipcount[:bipmonitors_migrated] %>)</td>
 		<td>(<%= @bipcount[:bipprofiles] - @bipcount[:bipprofiles_migrated]	%>)</td>
 		<td>(<%= @bipcount[:biprules] - @bipcount[:biprules_migrated] %>)</td>
 		<td>(<%= @bipcount[:bipclasses] - @bipcount[:bipclasses_migrated] %>)</td>
+		<td>(<%= @bipcount[:bippools] - @bipcount[:bippools_migrated] %>)</td>
+		<td>(<%= @bipcount[:bipmonitors] - @bipcount[:bipmonitors_migrated] %>)</td>
+		<td>(<%= @bipcount[:bipnodes] - @bipcount[:bipnodes_migrated] %>)</td>
+		<td>(N/A)</td>
 	</tr>
 </table>
