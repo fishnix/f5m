@@ -22,7 +22,7 @@
 			<td>
 				<%= form_for bip_virtual, :url => bip_config_virtual_path(:bip_config_id => @bip_config.id, :id => bip_virtual.id) do |f| %>
 					<%= select(:virtual, :contact_id, options_for_select(@contacts.collect { |c| [ c.name, c.id ] }, bip_virtual.contact_id), { :include_blank => true }) %>
-					<%= f.submit %>
+					<%= f.submit "Save" %>
 				<% end %>
 			</td>
 			<td><%= bip_virtual.enable %></td>
