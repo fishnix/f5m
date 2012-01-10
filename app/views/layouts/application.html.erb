@@ -3,36 +3,32 @@
 <head>
   <title>F5m</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+    }
+  </style>
 </head>
 <body>
-
-<div id="headernav">
-	<% if @bip_config.nil? %>
-		<div id='topheader'>
-			<%= render :partial => 'bip_configs/homeheader' %>
-		</div>
-		<nav>
-			<%= render :partial => 'bip_configs/homemenu' %>
-		</nav>
-	<% else %>
-		<div id='topheader'>
+	<div class="topbar">
+      <div class="topbar-inner">
+        <div class="container-fluid">
 			<%= render :partial => 'bip_configs/topheader', :locals => { :bip_config => @bipconfig } %>
 		</div>
-		<nav>
-			<%= render :partial => 'bip_configs/topmenu', :locals => { :bip_config => @bipconfig } %>
-		</nav>
-	<% end %>
-</div>
+      </div>
+    </div>
 
-<div id='content'>
-	<%= yield %>
-<div>
+    <div class="container-fluid">
+		<%= yield %>
+	<div>
 	
-<footer>
-	<%= render :partial => "layouts/footer" %>
-</footer>
+    <hr>
+    
+	<footer>
+		<%= render :partial => "layouts/footer" %>
+	</footer>
 
 </body>
 </html>
