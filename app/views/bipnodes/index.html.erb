@@ -1,27 +1,31 @@
 <h3>Bipnodes</h3>
 
-<table>
-	<tr>
-		<th>Migrated</th>
-		<th>Node Name</th>
-		<th>Screen</th>
-		<th>Monitor</th>
-		<th>Dynamic Ratio</th>
-		<th>Limit</th>
-		<th>Ratio</th>
-		<th>Enabled</th>
-	</tr>
-	<% @bipnodes.each do |bip_node| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-			<td><%= render :partial => "migrated", :locals => { :bip_node => bip_node } %></td>
-			<td><%= bip_node.name %></td>
-			<td><%= bip_node.screen %></td>
-			<td><%= bip_node.monitor %></td>
-			<td><%= bip_node.dyn_ratio %></td>
-			<td><%= bip_node.limit %></td>
-			<td><%= bip_node.ratio %></td>
-			<td><%= bip_node.updown %></td>
+			<th>Migrated</th>
+			<th>Node Name</th>
+			<th>Screen</th>
+			<th>Monitor</th>
+			<th>Dynamic Ratio</th>
+			<th>Limit</th>
+			<th>Ratio</th>
+			<th>Enabled</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @bipnodes.each do |bip_node| %>
+			<tr>
+				<td><%= render :partial => "migrated", :locals => { :bip_node => bip_node } %></td>
+				<td><%= bip_node.name %></td>
+				<td><%= bip_node.screen %></td>
+				<td><%= bip_node.monitor %></td>
+				<td><%= bip_node.dyn_ratio %></td>
+				<td><%= bip_node.limit %></td>
+				<td><%= bip_node.ratio %></td>
+				<td><%= bip_node.updown %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 

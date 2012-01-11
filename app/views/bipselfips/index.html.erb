@@ -1,21 +1,25 @@
 <h3>Bipselfips</h3>
 
-<table>
-	<tr>
-		<th>SelfIp</th>
-		<th>Netmask</th>
-		<th>Unit</th>
-		<th>Floating</th>
-		<th>VLAN</th>
-	</tr>
-	<% @bipselfip.each do |bip_selfip| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-		<td><%= bip_selfip.name %></td>
-		<td><%= bip_selfip.netmask %></td>
-		<td><%= bip_selfip.unit %></td>
-		<td><%= bip_selfip.floating %></td>
-		<td><%= bip_selfip.vlan %></td>
+			<th>SelfIp</th>
+			<th>Netmask</th>
+			<th>Unit</th>
+			<th>Floating</th>
+			<th>VLAN</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @bipselfip.each do |bip_selfip| %>
+			<tr>
+			<td><%= bip_selfip.name %></td>
+			<td><%= bip_selfip.netmask %></td>
+			<td><%= bip_selfip.unit %></td>
+			<td><%= bip_selfip.floating %></td>
+			<td><%= bip_selfip.vlan %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 

@@ -1,16 +1,20 @@
 <h3>Biprules</h3>
 
-<table>
-	<tr>
-		<th>Migrated</th>
-		<th>Name</th>
-		<th>Content</th>
-	</tr>
-	<% @biprules.each do |bip_rule| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-			<td><%= render :partial => "migrated", :locals => { :bip_rule => bip_rule } %></td>
-			<td><%= bip_rule.name %></td>
-			<td><pre><%= bip_rule.content %></pre></td>
+			<th>Migrated</th>
+			<th>Name</th>
+			<th>Content</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @biprules.each do |bip_rule| %>
+			<tr>
+				<td><%= render :partial => "migrated", :locals => { :bip_rule => bip_rule } %></td>
+				<td><%= bip_rule.name %></td>
+				<td><pre><%= bip_rule.content %></pre></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

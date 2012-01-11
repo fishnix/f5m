@@ -1,3 +1,11 @@
 <% bip_virtual.biprules.each do |r| %>
-	<%= link_to r.name, bip_config_biprule_path(@bip_config.id,r.id), :remote => true %><br />
+	<div class="modal hide fade" id="modal-window-<%= bip_virtual.name + "-" + r.name %>">
+		<div class="modal-header">
+			<h3><%= r.name %></h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+	<%= link_to r.name, bip_config_biprule_path(@bip_config.id, r.id), 
+				{:remote => true, 'data-controls-modal' =>  "modal-window-" + bip_virtual.name + '-' + r.name, 'data-backdrop' => true, 'data-keyboard' => true} %><br />
 <% end %>

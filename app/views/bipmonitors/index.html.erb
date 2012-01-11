@@ -1,16 +1,20 @@
 <h3>Bipmonitors</h3>
 
-<table>
-	<tr>
-		<th>Migrated</th>
-		<th>Name</th>
-		<th>Content</th>
-	</tr>
-	<% @bipmonitors.each do |bip_monitor| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-			<td><%= render :partial => "migrated", :locals => { :bip_monitor => bip_monitor } %></td>
-			<td><%= bip_monitor.name %></td>
-			<td><pre><%= bip_monitor.content %></pre></td>
+			<th>Migrated</th>
+			<th>Name</th>
+			<th>Content</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @bipmonitors.each do |bip_monitor| %>
+			<tr>
+				<td><%= render :partial => "migrated", :locals => { :bip_monitor => bip_monitor } %></td>
+				<td><%= bip_monitor.name %></td>
+				<td><pre><%= bip_monitor.content %></pre></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

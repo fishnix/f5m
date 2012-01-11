@@ -1,3 +1,11 @@
 <% bip_pool.bipmonitors.each do |m| %>
-	<%= link_to m.name, bip_config_bipmonitor_path(@bip_config.id, m.id), :remote => true %><br />
+	<div class="modal hide fade" id="modal-window-<%= bip_pool.name + "-" + m.name %>">
+		<div class="modal-header">
+			<h3><%= m.name %></h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+	<%= link_to m.name, bip_config_bipmonitor_path(@bip_config.id, m.id), 
+				{:remote => true, 'data-controls-modal' =>  "modal-window-" + bip_pool.name + '-' + m.name, 'data-backdrop' => true, 'data-keyboard' => true} %><br />
 <% end %>

@@ -1,20 +1,23 @@
+
 <table>
-	<tr>
-		<th>Name</th>
-		<th>Content</th>
-		<th>Migrated</th>
-	</tr>
-	<tr>
-		<td><%= @bipvirtual.name %></td>
-		<td><pre><%= @bipvirtual.content %></pre></td>
-		<td>
-			<div class="migrated-image">
-				<% if @bipvirtual.migrated %>
-					<%= image_tag "green-check.png" %>
-				<% else %>
-					<%= image_tag "red-x.png" %>
-				<% end %>
-			</div>
-		</td>
-	</tr>
+	<thead>
+		<tr>
+			<th>Content</th>
+			<th>Migrated</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><pre><%= @bipvirtual.content %></pre></td>
+			<td>
+				<div class="migrated-image">
+					<% if @bipvirtual.migrated %>
+						<%= image_tag "green-check.png", :width => 50, :height => 50 %>
+					<% else %>
+						<%= image_tag "red-x.png", :width => 50, :height => 50 %>
+					<% end %>
+				</div>
+			</td>
+		</tr>
+	</tbody>
 </table>

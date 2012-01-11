@@ -1,18 +1,22 @@
 <h3>Bippools</h3>
 
-<table>
-	<tr>
-		<th>Migrated</th>
-		<th>Name</th>
-		<th>Members</th>
-		<th>Monitors</th>
-	</tr>
-	<% @bippools.each do |bip_pool| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-			<td><%= render :partial => "migrated", :locals => { :bip_pool => bip_pool } %></td>
-			<td><%= bip_pool.name %><br /></td>
-			<td><%= render :partial => "members", :locals => { :bip_pool => bip_pool } %></td>
-			<td><%= render :partial => "monitors", :locals => { :bip_pool => bip_pool } %></td>
+			<th>Migrated</th>
+			<th>Name</th>
+			<th>Members</th>
+			<th>Monitors</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @bippools.each do |bip_pool| %>
+			<tr>
+				<td><%= render :partial => "migrated", :locals => { :bip_pool => bip_pool } %></td>
+				<td><%= bip_pool.name %><br /></td>
+				<td><%= render :partial => "members", :locals => { :bip_pool => bip_pool } %></td>
+				<td><%= render :partial => "monitors", :locals => { :bip_pool => bip_pool } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

@@ -1,32 +1,32 @@
-<div class="modal">
 <table>
-	<tr>
-		<th>Node Name</th>
-		<th>Screen</th>
-		<th>Monitor</th>
-		<th>Dynamic Ratio</th>
-		<th>Limit</th>
-		<th>Ratio</th>
-		<th>Enabled</th>
-		<th>Migrated</th>
-	</tr>
-	<tr>
-		<td><%= @bipnode.name %></td>
-		<td><%= @bipnode.screen %></td>
-		<td><%= @bipnode.monitor %></td>
-		<td><%= @bipnode.dyn_ratio %></td>
-		<td><%= @bipnode.limit %></td>
-		<td><%= @bipnode.ratio %></td>
-		<td><%= @bipnode.updown %></td>
-		<td>
-			<div class="migrated-image">
-				<% if @bipnode.migrated %>
-					<%= image_tag "green-check.png" %>
-				<% else %>
-					<%= image_tag "red-x.png" %>
-				<% end %>
-			</div>
-		</td>
-	</tr>
+	<thead>
+		<tr>
+			<th>Screen</th>
+			<th>Monitor</th>
+			<th>Dynamic Ratio</th>
+			<th>Limit</th>
+			<th>Ratio</th>
+			<th>Enabled</th>
+			<th>Migrated</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @bipnode.screen %></td>
+			<td><%= @bipnode.monitor %></td>
+			<td><%= @bipnode.dyn_ratio %></td>
+			<td><%= @bipnode.limit %></td>
+			<td><%= @bipnode.ratio %></td>
+			<td><%= @bipnode.updown %></td>
+			<td>
+				<div class="migrated-image">
+					<% if @bipnode.migrated %>
+						<%= image_tag "green-check.png", :width => 50, :height => 50 %>
+					<% else %>
+						<%= image_tag "red-x.png", :width => 50, :height => 50 %>
+					<% end %>
+				</div>
+			</td>
+		</tr>
+	</tbody>
 </table>
-</div>

@@ -152,12 +152,12 @@ class BipConfigsController < ApplicationController
   private
 
     def resolve_layout
-      case action_name
-      when "new", "upload"
-        "new_bip_config"
-      else
+#      case action_name
+#      when "new", "upload"
+#        "new_bip_config"
+#      else
         "application"
-      end
+#      end
     end
   
 end

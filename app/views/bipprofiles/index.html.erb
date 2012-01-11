@@ -1,18 +1,22 @@
 <h3>Bipprofiles</h3>
 
-<table>
-	<tr>
-		<th>Migrated</th>
-		<th>Name</th>
-		<th>Type</th>
-		<th>Content</th>
-	</tr>
-	<% @bipprofiles.each do |bip_profile| %>
+<table class="zebra-striped">
+	<thead>
 		<tr>
-			<td><%= render :partial => "migrated", :locals => { :bip_profile => bip_profile } %></td>
-			<td><%= bip_profile.name %></td>
-			<td><%= bip_profile.type %></td>
-			<td><pre><%= bip_profile.content %></pre></td>
+			<th>Migrated</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Content</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<% @bipprofiles.each do |bip_profile| %>
+			<tr>
+				<td><%= render :partial => "migrated", :locals => { :bip_profile => bip_profile } %></td>
+				<td><%= bip_profile.name %></td>
+				<td><%= bip_profile.type %></td>
+				<td><pre><%= bip_profile.content %></pre></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>

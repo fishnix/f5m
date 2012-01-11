@@ -1,4 +1,6 @@
 class BipConfig < ActiveRecord::Base
+  validates_presence_of :name
+  
   has_many :virtuals,           :dependent => :destroy
   has_many :bippools,           :dependent => :destroy
   has_many :bipprofiles,        :dependent => :destroy

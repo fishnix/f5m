@@ -21,11 +21,25 @@
 		<% @bipvirtuals.each do |bip_virtual| %>
 			<tr>
 				<td><%= render :partial => "migrated", :locals => { :bip_virtual => bip_virtual } %></td>
-				<td><%= link_to bip_virtual.name, bip_config_virtual_path(@bip_config.id, bip_virtual.id), :remote => true %></td>
+				<td>
+					<div class="modal hide fade" id="modal-window-<%= bip_virtual.name %>">
+						<div class="modal-header">
+							<h3><%= bip_virtual.name%></h3>
+						</div>
+						<div class="modal-body center">
+						</div>
+					</div>
+					<%= link_to bip_virtual.name, bip_config_virtual_path(@bip_config.id, bip_virtual.id), 
+								{:remote => true, 'data-controls-modal' =>  "modal-window-" + bip_virtual.name, 'data-backdrop' => true, 'data-keyboard' => true} %>
+				</td>
 				<td>
 					<%= form_for bip_virtual, :url => bip_config_virtual_path(:bip_config_id => @bip_config.id, :id => bip_virtual.id) do |f| %>
-						<%= select(:virtual, :contact_id, options_for_select(@contacts.collect { |c| [ c.name, c.id ] }, bip_virtual.contact_id), { :include_blank => true }) %>
-						<%= f.submit "Save" %>
+						<fieldset>
+							<div class="clearfix">
+								<%= select(:virtual, :contact_id, options_for_select(@contacts.collect { |c| [ c.name, c.id ] }, bip_virtual.contact_id), { :include_blank => true }, :class => "medium") %>
+							</div>
+						</fieldset>
+						<%= f.submit "Save", :class => "btn primary small" %>
 					<% end %>
 				</td>
 				<td><%= bip_virtual.enable %></td>

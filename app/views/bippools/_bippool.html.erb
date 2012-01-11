@@ -1,36 +1,34 @@
-<div class="modal">
-<table>
-	<tr>
-		<th>Name</th>
-		<th>Members</th>
-		<th>Monitors</th>
-		<th>Content</th>
-		<th>Migrated</th>
-	</tr>
-	<tr>
-		<td>
-			<%= @bippool.name %><br />
-		</td>
-		<td>
-			<% @bippool.bipmembers.each do |m| %>
-				<%= m.bipnode.name %>:<%= m.port %><br />
-			<% end %>
-		</td>
-		<td>
-			<% @bippool.bipmonitors.each do |m| %>
-				<%= m.name %><br />
-			<% end %>
-		</td>
-		<td><pre><%= @bippool.content %></pre></td>
-		<td>
-			<div class="migrated-image">
-				<% if @bippool.migrated %>
-					<%= image_tag "green-check.png" %>
-				<% else %>
-					<%= image_tag "red-x.png" %>
+<table class="zebra-striped">
+	<thead>
+		<tr>
+			<th>Members</th>
+			<th>Monitors</th>
+			<th>Content</th>
+			<th>Migrated</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<% @bippool.bipmembers.each do |m| %>
+					<%= m.bipnode.name %>:<%= m.port %><br />
 				<% end %>
-			</div>
-		</td>
-	</tr>
+			</td>
+			<td>
+				<% @bippool.bipmonitors.each do |m| %>
+					<%= m.name %><br />
+				<% end %>
+			</td>
+			<td><pre><%= @bippool.content %></pre></td>
+			<td>
+				<div class="migrated-image">
+					<% if @bippool.migrated %>
+						<%= image_tag "green-check.png", :width => 50, :height => 50 %>
+					<% else %>
+						<%= image_tag "red-x.png", :width => 50, :height => 50 %>
+					<% end %>
+				</div>
+			</td>
+		</tr>
+	</tbody>
 </table>
-</div>

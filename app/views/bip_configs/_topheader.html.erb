@@ -1,9 +1,10 @@
-<% if @bip_config.nil? %>
+<% if @bip_config.nil? or @bip_config.name.nil? %>
 
 	<%= link_to "BigIP Config Parser", bip_configs_path, :class =>"brand" %>
 	<ul class="nav">
 		<li><%= link_to "Home", 	bip_configs_path %></li>
 		<li><%= link_to "Contacts",	contacts_path %></li>
+		<li><%= link_to 'Upload', new_bip_config_path, :class => "pull-right" %></li>			
 	</ul>
 
 <% else %>
@@ -20,6 +21,7 @@
 		<li><%= link_to "Nodes", 	[@bip_config, :bipnodes ]	%></li>
 		<li><%= link_to "SelfIps", 	[@bip_config, :bipselfips]	%></li>
 		<li><%= link_to "Contacts",	contacts_path %></li>
+		<li><%= link_to 'Upload', new_bip_config_path %></li>
 	</ul>
 
 <% end %>

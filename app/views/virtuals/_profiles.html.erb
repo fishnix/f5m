@@ -1,3 +1,11 @@
 <% bip_virtual.bipprofiles.each do |p| %>
-	<%= link_to p.name, bip_config_bipprofile_path(@bip_config.id,p.id), :remote => true %><br />
+	<div class="modal hide fade" id="modal-window-<%= bip_virtual.name + "-" + p.name %>">
+		<div class="modal-header">
+			<h3><%= p.name %></h3>
+		</div>
+		<div class="modal-body">
+		</div>
+	</div>
+	<%= link_to p.name, bip_config_bipprofile_path(@bip_config.id, p.id), 
+				{:remote => true, 'data-controls-modal' =>  "modal-window-" + bip_virtual.name + '-' + p.name, 'data-backdrop' => true, 'data-keyboard' => true} %><br/>
 <% end %>

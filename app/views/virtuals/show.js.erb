@@ -1,3 +1,1 @@
-var newDiv = $(document.createElement('div'));
-newDiv.html('<%= escape_javascript(render(:partial => @bipvirtual)) %>'); 
-newDiv.dialog({ title: 'Virtual' , modal: true, width: 'auto', heigh: 'auto' }).draggable();
+$('.modal-body').html('<%= escape_javascript(render :partial => @bipvirtual) %>');
