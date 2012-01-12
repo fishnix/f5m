@@ -6,9 +6,9 @@ Barebones, quick and dirty F5 configuration parser.
 
 TODO:
  - update virtuals view to include jquery links for profiles
- - add contact information model and link to virtuals
  - Dependency tracking on virtual for "ready to migrate"
  - Diff parsing so data can be updated with newer bigip.conf's
 
 Known Bugs:
  - profiles are parsed wrong, type missing in model
+ - modal popup doesn't work for members/nodes in the pool view
