@@ -44,6 +44,7 @@ class BipConfigsController < ApplicationController
   # GET /bip_configs/new.xml
   def new
     @bip_config = BipConfig.new
+    @bip_configs = BipConfig.all
 
     respond_to do |format|
       format.html # new.html.erb

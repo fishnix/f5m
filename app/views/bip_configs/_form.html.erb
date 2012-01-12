@@ -13,7 +13,28 @@
 				<div class="input">
 			    	<%= f.file_field :file %>
 			  	</div>
-			</div>	
+			</div>
+			
+			<div class="clearfix">
+				<%= f.label :bip_config %>
+				<div class="input">
+					<%= select_tag 'bip_config_id', options_for_select(@bip_configs.collect {|c| [c.name, c.id] }) %>
+				</div>
+			</div>
+			
+			<div class="clearfix">
+				<%= label :upload, :overwrite_config, "Overwrite Config" %>
+				<div class="input">
+					<%= f.radio_button :overwrite_config, "true" %>
+				</div>
+			</div>
+			<div class="clearfix">
+				<%= label :upload, :overwrite_config_false, "Dont Overwrite Config" %>
+				<div class="input">
+					<%= f.radio_button :overwrite_config, "false" %>
+				</div>
+			</div>
+			
 		</fieldset>
 		<div class="clearfix">
 			<div class="input">
