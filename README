@@ -10,3 +10,4 @@ TODO:
  - httpclasses are not shown as links in virtual view
 
 Known Bugs:
+ - Node modal on pools index is broken
