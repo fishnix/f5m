@@ -43,8 +43,8 @@ class BipConfigsController < ApplicationController
   # GET /bip_configs/new
   # GET /bip_configs/new.xml
   def new
-    @bip_config = BipConfig.new
-
+    @bip_configs = BipConfig.all
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @bip_config }
@@ -65,7 +65,7 @@ class BipConfigsController < ApplicationController
     end  
     
     parse_profiles(filedata).each do |n,c|
-      Bipprofile.create(:name => n, :bip_config_id => @data.id, :type => c[:type], :content => c[:full], :migrated => false )
+      Bipprofile.create(:name => n, :bip_config_id => @data.id, :ptype => c[:type], :content => c[:full], :migrated => false )
     end
     
     parse_rules(filedata).each do |n,c|
@@ -132,7 +132,7 @@ class BipConfigsController < ApplicationController
       
     end
     
-    redirect_to bip_configs_path
+    redirect_to bip_configs_path, :notice => conf_name + ' was successfully created.'
     #render :text => rules
     #render :text => "created #{@data.id}"
   end
@@ -144,7 +144,7 @@ class BipConfigsController < ApplicationController
     @bip_config.destroy
 
     respond_to do |format|
-      format.html { redirect_to(bip_configs_url) }
+      format.html { redirect_to(bip_configs_url, :alert => @bip_config.name + " successfully destroyed.") }
       format.xml  { head :ok }
     end
   end

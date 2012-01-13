@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20111129154550) do
 
   create_table "bipprofiles", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "ptype"
     t.text     "content"
     t.integer  "bip_config_id"
     t.boolean  "migrated"
@@ -130,14 +130,6 @@ ActiveRecord::Schema.define(:version => 20111129154550) do
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contactvirtuals", :force => true do |t|
-    t.integer  "contact_id"
-    t.integer  "virtual_id"
-    t.integer  "bip_config_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

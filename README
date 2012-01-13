@@ -5,10 +5,18 @@ Barebones, quick and dirty F5 configuration parser.
   find deps and keep track of what we've moved to our new pair of LTMs
 
 TODO:
+<<<<<<< HEAD
  - update virtuals view to include jquery links for profiles
+=======
+>>>>>>> update-bip-config
  - Dependency tracking on virtual for "ready to migrate"
  - Diff parsing so data can be updated with newer bigip.conf's
+ - httpclasses are not shown as links in virtual view
 
 Known Bugs:
+<<<<<<< HEAD
  - profiles are parsed wrong, type missing in model
  - modal popup doesn't work for members/nodes in the pool view
+=======
+ - Node modal on pools index is broken
+>>>>>>> update-bip-config

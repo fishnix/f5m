@@ -21,6 +21,19 @@
     </div>
 
     <div class="container-fluid">
+	
+		<% if notice %>
+			<div class="alert-message info">
+				<%= notice %>
+			</div>
+		<% end %>
+			
+		<% if alert %>
+			<div class="alert-message warning">
+	    		<%= alert %>
+			</div>
+		<% end %>
+		
 		<%= yield %>
 	<div>
 	

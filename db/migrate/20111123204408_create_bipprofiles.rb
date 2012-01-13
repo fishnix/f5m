@@ -2,7 +2,7 @@ class CreateBipprofiles < ActiveRecord::Migration
   def self.up
     create_table :bipprofiles do |t|
       t.string :name
-      t.string :type
+      t.string :ptype
       t.text :content
       t.integer :bip_config_id
       t.boolean :migrated
