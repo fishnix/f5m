@@ -1,17 +1,19 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bip_configs.each do |bip_config| %>
-  <tr>
-    <td><%= bip_config.name %></td>
-    <td><%= link_to 'Show', bip_config %></td>
-    <td><%= link_to 'Destroy', bip_config, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="span10">
+	<thead>
+		<tr>
+		    <th>Name</th>
+		    <th></th>
+		    <th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @bip_configs.each do |bip_config| %>
+		  <tr>
+		    <td><%= bip_config.name %></td>
+		    <td><%= link_to 'Show', bip_config, :class => "btn info" %></td>
+		    <td><%= link_to 'Destroy', bip_config, :class => "btn danger",  :confirm => 'Are you sure?', :method => :delete %></td>
+		  </tr>
+		<% end %>
+	</tbody>
 </table>
 
-<br />
