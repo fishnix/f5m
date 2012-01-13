@@ -327,8 +327,9 @@ class ApplicationController < ActionController::Base
   # Pull rules from bigIP conf
   # returns Hash
   def parse_rules(confdata)
-    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user'
-    regex = /^rule\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
+    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user|configsync'
+    #regex = /^rule\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
+    regex = /^rule\s+(\S+)\s+\{(.*?)\}\s+(?=#{keywords})/m
    
     rules = Hash.new
     confdata.scan(regex) do |m|
@@ -340,8 +341,10 @@ class ApplicationController < ActionController::Base
   
   # Pull profiles from bigIP conf
   def parse_profiles(confdata)
-    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user'
-    regex = /^profile\s+([A-Za-z0-9_-]+)\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
+    profile_types = 'clientssl|fastL4|http|httpclass|oneconnect|persist|tcp'
+    keywords = 'class|monitor|node|partition|pool|virtual|rule|profile|route|self|shell|snat|snatpool|user|configsync'
+    #regex = /^profile\s+([A-Za-z0-9_-]+)\s+([A-Za-z0-9_-]+)\s+\{(.*?)\}\s+(:?#{keywords})/m
+    regex = /^profile\s+(#{profile_types})\s+(\S+)\s+\{(.*?)\}\s+/m
    
     profiles = Hash.new
     confdata.scan(regex) do |m|

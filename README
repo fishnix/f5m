@@ -5,10 +5,8 @@ Barebones, quick and dirty F5 configuration parser.
   find deps and keep track of what we've moved to our new pair of LTMs
 
 TODO:
- - update virtuals view to include jquery links for profiles
- - add contact information model and link to virtuals
  - Dependency tracking on virtual for "ready to migrate"
  - Diff parsing so data can be updated with newer bigip.conf's
+ - httpclasses are not shown as links in virtual view
 
 Known Bugs:
- - profiles are parsed wrong, type missing in model

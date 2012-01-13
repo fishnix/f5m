@@ -2,12 +2,14 @@
 	<thead>
 		<tr>
 			<th>Profile Type</th>
+			<th>Porfile Content</th>
 			<th>Migrated</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td><%= @bipprofile.type %></td>
+			<td><%= @bipprofile.ptype %></td>
+			<td><pre><%= @bipprofile.content %></pre></td>
 			<td>
 				<div class="migrated-image">
 					<% if @bipprofile.migrated %>
