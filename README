@@ -10,6 +10,4 @@ TODO:
  - httpclasses are not shown as links in virtual view
 
 Known Bugs:
- - profiles are parsed wrong, type missing in model
- - modal popup doesn't work for members/nodes in the pool view
  - Node modal on pools index is broken
