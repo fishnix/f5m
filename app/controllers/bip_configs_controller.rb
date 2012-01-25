@@ -133,8 +133,6 @@ class BipConfigsController < ApplicationController
     end
     
     redirect_to bip_configs_path, :notice => conf_name + ' was successfully created.'
-    #render :text => rules
-    #render :text => "created #{@data.id}"
   end
 
   # DELETE /bip_configs/1
